@@ -1,0 +1,171 @@
+<section
+  class="w-full h-[280px] bg-cover bg-center relative mt-[-60px]"
+  style="background-image: url('https://accric.com/wp-content/themes/acrric/Assets/images/home/763.jpg');"
+>
+  <div class="absolute inset-0 bg-[#001A5755]"></div>
+
+  <div class="relative h-full flex items-center justify-center">
+    <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold text-center drop-shadow-lg">
+     Contact Us
+    </h1>
+  </div>
+</section>
+
+<section class="w-full py-20 flex justify-center bg-white">
+  <div class="max-w-6xl w-full bg-white shadow-xl rounded-xl p-10 grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+    <!-- Left Image -->
+    <div class="flex justify-center items-start">
+      <img 
+        src="assets/images/contact-us.jpg"
+        alt="Contact"
+        class="rounded-xl h-[500px] w-[500px] object-cover shadow-lg"
+      />
+    </div>
+
+    <!-- Right Form -->
+    <form class="space-y-8 w-full">
+
+      <!-- Two Column Inputs -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div>
+          <label class="font-light text-gray-700">Name *</label>
+          <input 
+            type="text"
+            class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
+            required
+          >
+        </div>
+
+        <div>
+          <label class="font-light text-gray-700">Phone *</label>
+          <input 
+            type="text"
+            class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
+            required
+          >
+        </div>
+
+        <div>
+          <label class="font-light text-gray-700">Email *</label>
+          <input 
+            type="email"
+            class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
+            required
+          >
+        </div>
+
+        <div>
+          <label class="font-light text-gray-700">Company Name *</label>
+          <input 
+            type="text"
+            class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
+            required
+          >
+        </div>
+
+      </div>
+
+      <!-- Subject -->
+      <div>
+        <label class="font-light text-gray-700">Subject *</label>
+        <input 
+          type="text"
+          class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
+          required
+        >
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label class="font-light text-gray-700">Type Message Here</label>
+        <textarea 
+          rows="3"
+          class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
+        ></textarea>
+      </div>
+
+      <!-- Fake reCAPTCHA -->
+      <div class="border border-gray-300 rounded-md p-4 flex items-center gap-3 max-w-[244px]">
+        <input type="checkbox" class="w-5 h-5" />
+        <span class="text-gray-700">I'm not a robot</span>
+        <img 
+          src="/assets/images/recaptcha.png"
+          alt="captcha" 
+          class="h-6 ml-auto"
+        />
+      </div>
+
+      <!-- Button -->
+      <button 
+        type="submit"
+        class="bg-[#69BFFA] text-white font-semibold px-10 py-3 ml-1 rounded-md mx-auto block hover:bg-[#4fa8e5] transition duration-300"
+      >
+        SEND MESSAGE
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+<section class="w-full bg-[#f7f9fc] py-10 flex justify-center font-medium" style="font-family: 'Times New Roman', serif;">
+  <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+
+    <!-- USA Office -->
+    <div class="bg-white rounded-xl shadow-md p-5 text-center transition-all duration-500 hover:-translate-y-3">
+      <h3 class="text-[20px] font-semibold text-[#1ca3ff] mb-2">
+        United States Office
+      </h3>
+      <p class="text-gray-700 leading-[1.6]">
+        ACCRIC LLC <br />
+        3010 LBJ Freeway, Ste# 1200 <br />
+        Dallas, Texas 75234, United States
+      </p>
+    </div>
+
+    <!-- UAE Office -->
+    <div class="bg-white rounded-xl shadow-md p-5 text-center transition-all duration-500 hover:-translate-y-3">
+      <h3 class="text-[20px] font-semibold text-[#1ca3ff] mb-2">
+        UAE Office
+      </h3>
+      <p class="text-gray-700 leading-[1.6]">
+        ACCRIC International LLC-FZ <br />
+        Meydan Grandstand, 6th floor <br />
+        Meydan Road, Nad Al Sheba, Dubai, UAE
+      </p>
+    </div>
+
+    <!-- India Office -->
+    <div class="bg-white rounded-xl shadow-md p-5 text-center transition-all duration-500 hover:-translate-y-3">
+      <h3 class="text-[20px] font-semibold text-[#1ca3ff] mb-2">
+        India Office
+      </h3>
+      <p class="text-gray-700 leading-[1.6]">
+        ACCRIC Infotek Pvt Ltd <br />
+        1403, Tower C6, Cleo County, Sector 121 <br />
+        Noida – 201301, India
+      </p>
+    </div>
+
+  </div>
+</section>
+<section class="office-section">
+
+  <div class="office-wrapper">
+    
+  </div>
+
+  <div class="map-container">
+    <iframe
+      [src]="selectedMap | safeUrl"
+      width="100%"
+      height="450"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+  </div>
+
+</section>

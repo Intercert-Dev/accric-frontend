@@ -1,0 +1,37 @@
+<section class="bg-white text-center py-[100px] px-5">
+  <div class="max-w-[1200px] mx-auto">
+    <h2 class="text-[2.5rem] font-bold text-[#1c1c1c] mb-[60px] capitalize">
+      Our Services
+    </h2>
+
+    <div
+      class="grid gap-[60px] justify-items-center 
+             grid-cols-[repeat(auto-fit,minmax(250px,1fr))]"
+    >
+      <a
+        *ngFor="let service of services"
+        [routerLink]="service.link"
+        routerLinkActive="active"
+        class="block text-left max-w-[260px] p-6 rounded-[10px] bg-white 
+               transition-transform duration-300 hover:-translate-y-[3px]
+               no-underline text-inherit"
+      >
+        <img
+          [src]="service.icon"
+          [alt]="service.title"
+          class="w-20 h-20 mb-5"
+        />
+
+        <h3 class="text-[1.1rem] font-extrabold text-[#1c1c1c] mb-2 leading-[1.4] capitalize">
+          {{ service.title }}
+        </h3>
+
+        <span
+          class="text-[#4368c7] font-semibold text-[0.9rem] mt-1 inline-block transition-colors duration-200 hover:text-[#2746a3] hover:underline"
+        >
+          Read More →
+        </span>
+      </a>
+    </div>
+  </div>
+</section>

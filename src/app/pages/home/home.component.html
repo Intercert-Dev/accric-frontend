@@ -1,0 +1,87 @@
+<div class="home-container">
+
+  <!-- Hero Section -->
+ 
+  <section class="relative w-full h-[64vh] overflow-hidden hero-slider mt-[-60px]">
+
+  <!-- Background Slides -->
+  <ng-container *ngFor="let slide of slides; let i = index">
+    <img
+      [src]="slide.img"
+      class="absolute inset-0 w-full h-full object-cover transition-all duration-[2000ms] ease-out"
+      [class.opacity-100]="currentIndex === i"
+      [class.opacity-0]="currentIndex !== i"
+      [class.scale-100]="currentIndex === i"
+      [class.scale-110]="currentIndex !== i"
+      [style.zIndex]="currentIndex === i ? 10 : 1"
+    />
+  </ng-container>
+
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black/30"></div>
+
+  <!-- Text content — fully responsive -->
+  <div
+    class="
+      relative z-20
+      max-w-[600px]
+
+      ml-[20px] 
+      mt-[120px]
+
+      sm:ml-[40px]  sm:mt-[140px]
+      md:ml-[80px] md:mt-[160px]
+      lg:ml-[150px] lg:mt-[180px]
+      xl:ml-[250px] xl:mt-[200px]
+    "
+  >
+
+    <!-- Title -->
+    <h1
+      class="
+        text-[#4F74C1]
+        text-3xl
+        sm:text-4xl
+        md:text-5xl
+        font-bold
+        leading-tight
+        mb-6
+        transition-all duration-700
+      "
+      [class.opacity-100]="showText"
+      [class.opacity-0]="!showText"
+    >
+      {{ slides[currentIndex].title }}
+    </h1>
+
+    <!-- Subtitle -->
+    <p
+      class="
+        text-[#556382]
+        text-lg
+        sm:text-xl
+        md:text-2xl
+        lg:text-3xl
+        transition-all duration-700 delay-200
+      "
+      [class.opacity-100]="showText"
+      [class.opacity-0]="!showText"
+    >
+      {{ slides[currentIndex].subtitle }}
+    </p>
+
+  </div>
+
+</section>
+
+  <!-- Other Sections -->
+  <app-accric-section></app-accric-section>
+  <app-our-offering></app-our-offering>
+  <app-company-success></app-company-success>
+  <app-our-services></app-our-services>
+  <app-hero-section></app-hero-section>
+  <app-why-choose-us></app-why-choose-us>
+  <app-key-customers></app-key-customers>
+  <app-blog-section></app-blog-section>
+
+</div>

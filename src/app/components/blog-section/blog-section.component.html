@@ -1,0 +1,22 @@
+<section class="blogs-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Blogs</h2>
+      <a class="view-all-btn" routerLink="/blogs">View All</a>
+    </div>
+
+    <div class="blogs-grid">
+      <div class="blog-card" *ngFor="let blog of blogs">
+        <div class="image-box">
+          <img [src]="blog.image" [alt]="blog.title" />
+          <span class="date">{{ blog.date }}</span>
+        </div>
+        <div class="content">
+          <h3>{{ blog.title }}</h3>
+          <p>{{ blog.description }}</p>
+          <a href="#" class="read-more">READ MORE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

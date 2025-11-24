@@ -1,0 +1,102 @@
+
+.company-success-section {
+  position: relative;
+  background-color: #f7f9fc; /* Same light tone as accrci.com */
+  text-align: center;
+  padding: 100px 20px;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/images/world-map-dots.svg'); /* FIXED path */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%; /* Match accrci.com proportion */
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .content-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1c1c1c;
+    margin-bottom: 60px;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
+
+    .stat {
+      min-width: 160px;
+      text-align: center;
+
+      h3 {
+        font-size: 3rem;
+        color: #4368c7;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #333;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    padding: 80px 15px;
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .stats {
+      gap: 40px;
+
+      .stat h3 {
+        font-size: 2.5rem;
+      }
+
+      .stat p {
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 60px 10px;
+
+    .stats {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .stat h3 {
+      font-size: 2rem;
+    }
+
+    .stat p {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+
+
+

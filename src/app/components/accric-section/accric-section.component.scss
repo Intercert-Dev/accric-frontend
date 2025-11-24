@@ -1,0 +1,131 @@
+/* 🔹 Blue Hero Section */
+.accric-hero {
+  background-color: #85d0ff;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  background-size: 20px 20px;
+  padding: 40px 330px;
+  color: #1c2b3a;
+  font-family: 'Georgia', 'Times New Roman', serif;
+
+  .accric-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .left {
+    flex: 1;
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 26px;
+      font-weight: 700;
+      color: white;
+    }
+  }
+
+  .divider {
+    width: 5px;
+    height: 150px;
+    background-color: rgba(154, 89, 89, 0.6);
+  }
+
+  .right {
+    flex: 3;
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #1b2a38;
+      margin-bottom: 30px;
+    }
+
+    .quote-btn {
+      background-color: white;
+      border: 1px solid #4aa0e6;
+      color: #174a8c;
+      font-weight: 600;
+      padding: 10px 25px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      float: right;
+    }
+
+    .quote-btn:hover {
+      background-color: #e6f3ff;
+    }
+  }
+}
+
+/* 🔸 White About Section */
+.about-section {
+  background-color: white;
+  padding: 80px 330px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+
+  .about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+  }
+
+  .image-side {
+    flex: 1;
+    img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .text-side {
+    flex: 1;
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #1c2b3a;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #1b2a38;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+  }
+}
+
+/* 🔹 Responsive Styling */
+@media (max-width: 992px) {
+  .accric-hero {
+    padding: 40px 20px;
+    .accric-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .divider {
+      display: none;
+    }
+    .right .quote-btn {
+      float: none;
+    }
+  }
+
+  .about-section {
+    padding: 40px 20px;
+    .about-container {
+      flex-direction: column;
+    }
+  }
+}

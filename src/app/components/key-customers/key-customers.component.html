@@ -1,0 +1,45 @@
+
+
+
+<section class="py-16 bg-white text-center">
+  <div class="max-w-[1000px] mx-auto px-4">
+
+    <!-- Section Title -->
+    <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-12" style="font-family: 'Times New Roman', serif;">
+      Key Customers
+    </h2>
+
+    <!-- Responsive Customers Grid -->
+    <div
+      class="
+        grid
+        grid-cols-2
+        sm:grid-cols-2
+        md:grid-cols-3
+        lg:grid-cols-4
+        xl:grid-cols-6
+        gap-x-20
+        gap-y-10
+        justify-items-center
+        items-center
+        max-w-[1090px]
+        mx-auto
+      "
+    >
+      <div
+        class="w-[95px] h-[80px] bg-white shadow-md
+        flex items-center justify-center
+        transition-all duration-300
+        hover:-translate-y-1 hover:shadow-xl"
+        *ngFor="let customer of customers"
+      >
+        <img
+          [src]="customer.logo"
+          [alt]="customer.name"
+          class="max-w-[100px] max-h-[100px] object-contain"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>

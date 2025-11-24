@@ -1,0 +1,283 @@
+/* ------------------- */
+/* Global Container */
+/* ------------------- */
+// .about-container {
+//   width: 100%;
+//  // background-color: #f9f5f5;
+//   font-family: 'Poppins', sans-serif;
+//   color: #0b1f3a;
+//   overflow-x: hidden;
+// }
+
+/* Hero Section */
+/* ------------------- */
+// .about-hero {
+//   position: relative;
+//   // Try using the background image — if it's missing, it will fall back to white
+//   //background: url('assets/images/about-banner.jpg') center/cover no-repeat, #ffffff;
+//   height: 295px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   text-align: center;
+//   color: #ffffff; /* Default white for image background */
+//   font-family: 'Poppins', sans-serif;
+
+//   /* dark transparent overlay — visible only if image is present */
+//   &::before {
+//     content: '';
+//     position: absolute;
+//     inset: 0;
+//     background: rgba(8, 29, 61, 0.65);
+//     z-index: 1;
+//     opacity: 1;
+//     transition: opacity 0.3s ease;
+//   }
+
+//   /* When image fails to load, remove overlay & switch text color */
+//   &:not([style*="background-image"])::before {
+//     opacity: 0;
+//   }
+
+//   h1 {
+//     position: relative;
+//     z-index: 2;
+//     font-size: 48px;
+//     font-weight: 700;
+//     text-transform: capitalize;
+//     letter-spacing: 1px;
+//     color: #002b6b; /* Text visible when background is white */
+//   }
+// }
+
+
+/* ------------------- */
+/* About Section */
+/* ------------------- */
+// .about-section {
+//   padding: 80px 60px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+  
+
+//   .about-container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     flex-wrap: wrap;
+//     gap: 50px;
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     margin-left: 260px;
+//     /* Image Side */
+//     .image-side {
+//       flex: 1;
+//       min-width: 320px;
+
+//       img {
+//         width: 100%;
+//         height: auto;
+//         border-radius: 10px;
+//         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+//         object-fit: cover;
+//       }
+//     }
+
+//     /* Text Side */
+//     .text-side {
+//       flex: 1;
+//       min-width: 320px;
+
+//       h2 {
+//         font-size: 28px;
+//         font-weight: 600;
+//         color: #002b6b;
+//         margin-bottom: 20px;
+//         position: relative;
+
+//         &::after {
+//           content: '';
+//           position: absolute;
+//           bottom: -10px;
+//           left: 0;
+//           width: 60px;
+//           height: 3px;
+//           background-color: #0d6efd;
+//           border-radius: 3px;
+//         }
+//       }
+
+//       p {
+//         line-height: 1.8;
+//         font-size: 18px;
+//         margin-bottom: 20px;
+//         color: #0b1f3a;
+//       }
+//     }
+//   }
+// }
+
+/* ------------------- */
+/* Responsive Design */
+/* ------------------- */
+// @media (max-width: 991px) {
+//   .about-section {
+//     padding: 60px 30px;
+
+//     .about-container {
+//       flex-direction: column;
+//       text-align: center;
+
+//       .text-side h2::after {
+//         left: 50%;
+//         transform: translateX(-50%);
+//       }
+//     }
+//   }
+// }
+
+// @media (max-width: 600px) {
+//   .about-hero {
+//     height: 250px;
+
+//     h1 {
+//       font-size: 36px;
+//     }
+//   }
+
+//   .text-side p {
+//     font-size: 16px;
+//   }
+// }
+
+/* ------------------- */
+/* Page Wrapper */
+/* ------------------- */
+
+
+/* ------------------- */
+/* Wrapper */
+/* ------------------- */
+// .philosophy-page {
+//   font-family: 'Poppins', sans-serif;
+//   color: #0b1f3a;
+//   width: 100%;
+//   overflow-x: hidden;
+//   background-color: #ffffff;
+// }
+
+/* ------------------- */
+/* Blue Header */
+/* ------------------- */
+// .philosophy-hero {
+//   background-color: #072a5a;;
+//   color: #ffffff;
+//   text-align: left;
+//   padding: 100px 100px 240px;
+
+//   .hero-content {
+//     max-width: 1100px;
+//     margin: 0 auto;
+
+//     h1 {
+//       font-size: 48px;
+//       font-weight: 700;
+//       margin-bottom: 20px;
+//     }
+
+//     p {
+//       font-size: 18px;
+//       line-height: 1.8;
+//       color: #e1e5f0;
+//     }
+//   }
+// }
+
+/* ------------------- */
+/* White Cards */
+/* ------------------- */
+// .philosophy-content {
+//   background-color: #ffffff;
+//   padding: 60px 40px 100px;
+//   display: flex;
+//   justify-content: center;
+
+//   .card-container {
+//     background-color: #ffffff;
+//     border-radius: 8px;
+//     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+//     padding: 50px;
+//     max-width: 1100px;
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 40px;
+//     margin-top: -249px;
+//   }
+
+//   .philosophy-card {
+//     display: flex;
+//     align-items: flex-start;
+//     gap: 30px;
+
+//     .icon {
+//       flex-shrink: 0;
+
+//       i {
+//         font-size: 42px;
+//         color: #0d6efd; /* Blue tone matching header */
+//       }
+//     }
+
+//     .text {
+//       h3 {
+//         font-size: 18px;
+//         font-weight: 1000;
+//         color: #0b1f3a;
+//         margin-bottom: 8px;
+//       }
+
+//       p {
+//         font-size: 17px;
+//         line-height: 1.8;
+//         color: #333333;
+//       }
+//     }
+//   }
+// }
+
+/* ------------------- */
+/* Responsive */
+/* ------------------- */
+// @media (max-width: 991px) {
+//   .philosophy-hero {
+//     padding: 80px 40px 60px;
+
+//     h1 {
+//       font-size: 36px;
+//     }
+
+//     p {
+//       font-size: 16px;
+//     }
+//   }
+
+//   .philosophy-content {
+//     padding: 40px 20px;
+
+//     .card-container {
+//       padding: 30px;
+//     }
+
+//     .philosophy-card {
+//       flex-direction: column;
+//       align-items: flex-start;
+//       text-align: left;
+
+//       .icon i {
+//         font-size: 36px;
+//       }
+//     }
+//   }
+// }
