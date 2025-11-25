@@ -1,4 +1,4 @@
-<section class="blogs-section">
+<section class="blogs-section" style="font-family: 'Times New Roman', serif;">
   <div class="container">
     <div class="section-header">
       <h2>Blogs</h2>
@@ -13,8 +13,7 @@
         </div>
         <div class="content">
           <h3>{{ blog.title }}</h3>
-          <p>{{ blog.description }}</p>
-          <a href="#" class="read-more">READ MORE</a>
+          <a [routerLink]="blog.description" routerLinkActive="active" class="read-more">READ MORE</a>
         </div>
       </div>
     </div>

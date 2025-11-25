@@ -7,6 +7,10 @@ import { GovernaceRiskComponent } from './pages/services/governace-risk/governac
 import { BusinessExcellenceComponent } from './pages/services/business-excellence/business-excellence.component';
 import { EnvironmentSustainabilityComponent } from './pages/services/environment-sustainability/environment-sustainability.component';
 import { IsoManagementSystemAdvisoryComponent } from './pages/services/iso-management-system-advisory/iso-management-system-advisory.component';
+import { UnderstandingHippaComplianceComponent } from './pages/blogs/understanding-hippa-compliance/understanding-hippa-compliance.component';
+import { Is042001ForAgenticAiComponent } from './pages/blogs/is0-42001-for-agentic-ai/is0-42001-for-agentic-ai.component';
+import { ImplementIso27001Component } from './pages/blogs/implement-iso-27001/implement-iso-27001.component';
+
 
 import { ContactusComponent } from './pages/contact/contactus.component';
 
@@ -20,5 +24,9 @@ export const routes: Routes = [
   { path: 'services/business-excellence', component: BusinessExcellenceComponent },
   { path: 'services/environment-sustainbility', component: EnvironmentSustainabilityComponent },
   { path: 'services/iso-management-system-advisory', component: IsoManagementSystemAdvisoryComponent },
+  { path: 'blogs/understanding-hippa-compliance', component: UnderstandingHippaComplianceComponent },
+  { path: 'blogs/app-is0-42001-for-agentic-ai', component: Is042001ForAgenticAiComponent },
+  { path: 'blogs/implement-iso-27001.component', component: ImplementIso27001Component },
+
   { path: 'contact-us', component: ContactusComponent },
 ];

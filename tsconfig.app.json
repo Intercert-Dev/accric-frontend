@@ -10,7 +10,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/app/pages/blogs/is0-42001-for-agentic-ai/is0-42001-for-agentic-ai.component.ts"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]
