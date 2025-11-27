@@ -1,4 +1,6 @@
-/* 🔹 Blue Hero Section */
+/* ============================================================
+   🔹 Blue Hero Section (Fully Responsive)
+   ============================================================ */
 .accric-hero {
   background-color: #85d0ff;
   background-image: radial-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px);
@@ -16,6 +18,7 @@
 
   .left {
     flex: 1;
+     margin-left: -65px;
     h2 {
       font-size: 32px;
       font-weight: 700;
@@ -38,6 +41,7 @@
 
   .right {
     flex: 3;
+
     p {
       font-size: 18px;
       line-height: 1.8;
@@ -63,7 +67,9 @@
   }
 }
 
-/* 🔸 White About Section */
+/* ============================================================
+   🔸 White About Section (Fully Responsive)
+   ============================================================ */
 .about-section {
   background-color: white;
   padding: 80px 330px;
@@ -78,6 +84,7 @@
 
   .image-side {
     flex: 1;
+    margin-left: -57px;
     img {
       width: 100%;
       border-radius: 8px;
@@ -88,6 +95,7 @@
 
   .text-side {
     flex: 1;
+
     h2 {
       font-size: 36px;
       font-weight: 700;
@@ -106,26 +114,111 @@
   }
 }
 
-/* 🔹 Responsive Styling */
-@media (max-width: 992px) {
-  .accric-hero {
-    padding: 40px 20px;
-    .accric-container {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .divider {
-      display: none;
-    }
-    .right .quote-btn {
-      float: none;
-    }
+/* ============================================================
+   🔹 RESPONSIVE BREAKPOINTS (ALL SCREEN SUPPORT)
+   ============================================================ */
+
+/* 🟦 Large screens: keep padding but limit width */
+@media (min-width: 1600px) {
+  .accric-hero,
+  .about-section {
+    padding-left: 22%;
+    padding-right: 22%;
+  }
+}
+
+/* 🟧 Laptops 1366px – 1536px */
+@media (max-width: 1536px) {
+  .accric-hero,
+  .about-section {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
+
+/* 🟨 Tablets & Small Laptops (max-width: 1200px) */
+@media (max-width: 1200px) {
+  .accric-hero,
+  .about-section {
+    padding-left: 120px;
+    padding-right: 120px;
   }
 
+  .accric-hero .accric-container {
+    gap: 30px;
+  }
+
+  .about-section .about-container {
+    gap: 40px;
+  }
+}
+
+/* 🟩 Tablets (1024px and below) */
+@media (max-width: 1024px) {
+  .accric-hero,
   .about-section {
-    padding: 40px 20px;
-    .about-container {
-      flex-direction: column;
-    }
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+/* 🟦 Mobile tablets & big phones (768px and below) */
+@media (max-width: 768px) {
+  .accric-hero,
+  .about-section {
+    padding: 40px 30px;
+  }
+
+  .accric-hero .accric-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .accric-hero .divider {
+    display: none;
+  }
+
+  .accric-hero .right .quote-btn {
+    float: none;
+    display: block;
+    margin-top: 10px;
+  }
+
+  .about-section .about-container {
+    flex-direction: column;
+  }
+
+  .text-side h2 {
+    text-align: center !important;
+  }
+}
+
+/* 🟥 Small Phones (480px and below) */
+@media (max-width: 480px) {
+  .accric-hero,
+  .about-section {
+    padding: 30px 20px;
+  }
+
+  .left h2 {
+    font-size: 28px !important;
+  }
+
+  .left h3 {
+    font-size: 22px !important;
+  }
+
+  .text-side h2 {
+    font-size: 32px !important;
+  }
+
+  .right p,
+  .text-side p {
+    font-size: 16px !important;
+  }
+
+  .right .quote-btn {
+    width: 100%;
+    text-align: center;
   }
 }
