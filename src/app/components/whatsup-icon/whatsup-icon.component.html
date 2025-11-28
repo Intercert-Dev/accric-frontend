@@ -36,8 +36,10 @@
 
 <div
   *ngIf="showConsultation"
-  class="fixed bottom-24 right-6 w-[360px] bg-white rounded-xl shadow-xl border z-[999]">
-
+  class="fixed bottom-24 right-6 w-[360px] bg-white rounded-xl shadow-xl border z-[999999]
+         pointer-events-auto"
+  style="overflow: visible !important; position: fixed !important;">
+  
   <!-- Header -->
   <div class="bg-[#4e8df5] text-white px-4 py-3 flex justify-between items-center rounded-t-xl">
     <h3 class="font-semibold">Book a free consultation</h3>
