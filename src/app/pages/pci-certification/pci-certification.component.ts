@@ -20,6 +20,7 @@ export class PciCertificationComponent {
 
   regNumber: string = '';
   isTableVisible: boolean = false;
+  errorMessage: string = '';
 
   certificate = {
     certificateNo: '',
@@ -34,45 +35,49 @@ export class PciCertificationComponent {
   constructor(private http: HttpClient) {}
 
   showTable() {
+    this.errorMessage = '';
+    this.isTableVisible = false;
+
+    // Validate input
     if (this.regNumber.trim() === '') {
-      alert("Please enter Registration Number");
-      this.isTableVisible = false;
+      this.errorMessage = "Please enter Registration Number";
       return;
     }
 
     const apiUrl = `http://pci.accric.com/api/auth/client-certificate?certificateNo=${this.regNumber}`;
 
-   this.http.get<any>(apiUrl).subscribe({
-  next: (res) => {
-    if (res && res.data && Object.keys(res.data).length > 0) {
-      console.log("Certificate No:", res);
+    this.http.get<any>(apiUrl).subscribe({
+      next: (res) => {
+        if (res && res.data && Object.keys(res.data).length > 0) {
 
-      this.certificate = {
-        certificateNo: res.data.certificate_number_unique_id || '',
-        companyName: res.data.legal_entity_name || '',
-        classification: res.data.assessment_classification || '',
-        scope: res.data.audit_status || '',
-        issueDate: res.data.certificate_issue_date || '',
-        validDate: res.data.certificate_expiry_date || '',
-        status: res.data.audit_status || ''
-      };
+          this.certificate = {
+            certificateNo: res.data.certificate_number_unique_id || '',
+            companyName: res.data.legal_entity_name || '',
+            classification: res.data.assessment_classification || '',
+            scope: res.data.audit_status || '',
+            issueDate: res.data.certificate_issue_date || '',
+            validDate: res.data.certificate_expiry_date || '',
+            status: res.data.audit_status || ''
+          };
 
-      this.isTableVisible = true;
-    }
-  },
+          this.isTableVisible = true;
 
-  error: (err) => {
-    console.error("API Error:", err);
+        } else {
+          this.errorMessage = "No certificate record found!";
+        }
+      },
 
-    if (err.status === 404) {
-      alert("No certificate found for this number!");
-    } else {
-      alert("Server error! Please try again later.");
-    }
+      error: (err) => {
+        console.error("API Error:", err);
 
-    this.isTableVisible = false;   // ✅ Required
-  }
-});
+        if (err.status === 404) {
+          this.errorMessage = "No certificate found for this number!";
+        } else {
+          this.errorMessage = "Server error! Please try again later.";
+        }
 
+        this.isTableVisible = false;
+      }
+    });
   }
 }

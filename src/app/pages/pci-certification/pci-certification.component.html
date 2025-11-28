@@ -63,6 +63,10 @@
     </button>
   </div>
 
+  <p *ngIf="errorMessage" class="text-red-600 text-[15px] mt-2">
+    {{ errorMessage }}
+  </p>
+
   <!-- ✅ Table outside input div, centered -->
   <div *ngIf="isTableVisible" class="mt-6 flex justify-center w-full">
     <div class="bg-white shadow-lg rounded-xl w-full max-w-[650px] overflow-hidden" style="font-family: Cambria, 'Times New Roman', serif;" >
