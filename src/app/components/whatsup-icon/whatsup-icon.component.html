@@ -1,11 +1,12 @@
-<div class="chatbot-container">
+<!-- Chatbot Buttons (hide when form opens) -->
+<div class="chatbot-container" *ngIf="!showConsultation">
   <div 
     class="chatbot-options" 
     [class.open]="isOpen"
   >
     <button 
-    (click)="toggleConsultation()"
-    class="option-btn">
+      (click)="toggleConsultation()"
+      class="option-btn">
       <span>Book a free consultation</span>
       <i class="icon">📝</i>
     </button>
@@ -32,6 +33,7 @@
     <span *ngIf="isOpen" class="close-icon">✖</span>
   </button>
 </div>
+
 <div
   *ngIf="showConsultation"
   class="fixed bottom-24 right-6 w-[360px] bg-white rounded-xl shadow-xl border z-[999]">
