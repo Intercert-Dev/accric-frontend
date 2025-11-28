@@ -1,0 +1,32 @@
+<div class="chatbot-container">
+  <div 
+    class="chatbot-options" 
+    [class.open]="isOpen"
+  >
+    <button class="option-btn" routerLink="/contact-us">
+      <span>Book a free consultation</span>
+      <i class="icon">📝</i>
+    </button>
+
+    <button class="option-btn" routerLink="/contact-us">
+      <span>Contact Us</span>
+      <i class="icon">🔗</i>
+    </button>
+  </div>
+
+  <button 
+    class="chatbot-main-btn" 
+    (click)="toggleChatbot()"
+  >
+    <!-- Show SVG when closed -->
+    <img 
+      *ngIf="!isOpen"
+      src="https://accric.com/wp-content/plugins/bit-assist/img/widget/widgetIcon3.svg"
+      alt="Chat Icon"
+      class="chat-icon"
+    />
+
+    <!-- Show X when open -->
+    <span *ngIf="isOpen" class="close-icon">✖</span>
+  </button>
+</div>
