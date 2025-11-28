@@ -3,7 +3,9 @@
     class="chatbot-options" 
     [class.open]="isOpen"
   >
-    <button class="option-btn" routerLink="/contact-us">
+    <button 
+    (click)="toggleConsultation()"
+    class="option-btn">
       <span>Book a free consultation</span>
       <i class="icon">📝</i>
     </button>
@@ -29,4 +31,31 @@
     <!-- Show X when open -->
     <span *ngIf="isOpen" class="close-icon">✖</span>
   </button>
+</div>
+<div
+  *ngIf="showConsultation"
+  class="fixed bottom-24 right-6 w-[360px] bg-white rounded-xl shadow-xl border z-[999]">
+
+  <!-- Header -->
+  <div class="bg-[#4e8df5] text-white px-4 py-3 flex justify-between items-center rounded-t-xl">
+    <h3 class="font-semibold">Book a free consultation</h3>
+
+    <button (click)="toggleConsultation()" class="text-white text-lg">
+      ✕
+    </button>
+  </div>
+
+  <!-- Form Body -->
+  <div class="p-5 space-y-3">
+    <input type="text" placeholder="Name" class="w-full border rounded-lg p-2" />
+    <input type="email" placeholder="Email" class="w-full border rounded-lg p-2" />
+    <input type="number" placeholder="Number" class="w-full border rounded-lg p-2" />
+    <input type="text" placeholder="Company Name" class="w-full border rounded-lg p-2" />
+    <input type="text" placeholder="Subject" class="w-full border rounded-lg p-2" />
+    <textarea placeholder="Textarea" class="w-full border rounded-lg p-2 h-24"></textarea>
+
+    <button class="w-full bg-[#4e8df5] text-white py-2 rounded-lg font-semibold">
+      Submit
+    </button>
+  </div>
 </div>

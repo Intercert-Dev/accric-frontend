@@ -18,4 +18,9 @@ export class WhatsupIconComponent {
   toggleChatbot() {
     this.isOpen = !this.isOpen;
   }
+  showConsultation = false;
+
+toggleConsultation() {
+  this.showConsultation = !this.showConsultation;
+}
 }
