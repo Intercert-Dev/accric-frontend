@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-environment-sustainability',
-   imports: [RouterModule,RouterLink,RouterLinkActive],
+   imports: [RouterModule,RouterLink],
   templateUrl: './environment-sustainability.component.html',
   styleUrl: './environment-sustainability.component.scss',
 })

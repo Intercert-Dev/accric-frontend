@@ -31,6 +31,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   slides = [
     {
+      img: '/assets/images/banner3.png',
+      title: 'PCI DSS',
+      subtitle: 'A security standard for payment card transactions to prevent fraud and data breaches.'
+    },
+
+    {
       img: 'https://accric.com/wp-content/themes/acrric/Assets/images/home/slide-1.jpg',
       title: 'Precision and Commitment in Governance & Compliance',
       subtitle: 'Driving risk-aware, efficient, and compliant business operations with accuracy and integrityy.'

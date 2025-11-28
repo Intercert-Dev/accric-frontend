@@ -1,0 +1,103 @@
+header section {
+  overflow: visible !important;
+}
+
+/* Desktop / iPad Dropdown */
+.dropdown {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: white;
+  min-width: 260px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 9999;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all 0.25s ease;
+  display: none;
+}
+
+.dropdown-open {
+  opacity: 1;
+  transform: scaleY(1);
+  display: block;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu.open {
+  max-height: 700px;
+  opacity: 1;
+}
+
+/* Mobile Submenu */
+.mobile-sub {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-sub.open {
+  max-height: 300px;
+}
+
+/* Rotate Icon */
+.rotate-180 {
+  transform: rotate(180deg);
+  transition: 0.3s;
+}
+
+/* iPad Fix */
+@media (min-width: 768px) and (max-width: 1024px) {
+  header section:first-child > div {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  header section:nth-child(2) ul {
+    white-space: nowrap;
+  }
+}
+/* Sub-nav hover for desktop & iPad */
+.sub-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.sub-item:hover {
+  background: #E8F5FF;
+}
+
+/* Make text stay clean */
+.sub-item a {
+  display: block;
+  color: #2b4a8b;
+  text-decoration: none;
+}
+
+.sub-item:hover a {
+  color: #2b4a8b;
+}
+
+
+/* Mobile tap hover */
+@media (max-width: 767px) {
+  .sub-item {
+    padding: 12px 10px;
+    border-radius: 6px;
+  }
+
+  .sub-item:active {
+    background: #D6ECFF;
+  }
+}
