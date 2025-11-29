@@ -1,27 +1,43 @@
-<section class="relative w-full min-h-screen bg-cover bg-center bg-fixed 
-                bg-[url('https://accric.com/wp-content/themes/acrric/Assets/images/home/home-contact.jpg')] hero-section" style="font-family: 'Times New Roman', serif;">
-  
-  
+<section
+  class="relative w-full min-h-screen bg-cover filter bg-fixed 
+  bg-[url('https://accric.com/wp-content/themes/acrric/Assets/images/home/home-contact.jpg')]"
+  style="font-family: 'Times New Roman', serif;"
+>
+  <!-- Overlay -->
   <div class="absolute inset-0 bg-black/50"></div>
 
-  <div class="relative z-10 container mx-auto px-14 py-20 
-              flex flex-col lg:flex-row items-center justify-center gap-12 text-center lg:text-left">
+  <!-- Content Wrapper -->
+  <div
+    class="relative z-10 container mx-auto px-6 md:px-14 py-16 lg:py-20 
+    flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20
+    text-center lg:text-left"
+  >
 
-    
+    <!-- LEFT TEXT -->
     <div class="text-white max-w-xl">
-      <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6 lg:-mt-[125px]">
+      <h1
+        class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 
+        lg:-mt-[125px]"
+        style="font-family: 'Times New Roman', serif;"
+      >
         Your Partner in <br />
         <span>Governance, Risk & Compliance</span>
       </h1>
 
-      <p class="mb-4 text-sm md:text-base leading-relaxed" style="font-family: 'Times New Roman', serif;">
+      <p
+        class="mb-4 text-sm md:text-base font-semibold leading-relaxed"
+        style="font-family: 'Times New Roman', serif;"
+      >
         At Accric, we blend Accuracy and Adherence to ensure businesses excel in
         governance, risk, assurance, and compliance management. Our expertise lies
         in integrating people, processes, and technology to navigate complex regulatory
         landscapes with confidence.
       </p>
 
-      <p class="text-sm md:text-base leading-relaxed" style="font-family: 'Times New Roman', serif;">
+      <p
+        class="text-sm md:text-base  font-semibold leading-relaxed"
+        style="font-family: 'Times New Roman', serif;"
+      >
         With a meticulous approach and a commitment to industry standards, we deliver
         reliable, risk-aware, and compliance-driven strategies tailored to your business
         needs. Let Accric be your trusted partner in achieving precision and operational
@@ -29,47 +45,82 @@
       </p>
     </div>
 
-    
-    <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg">
-      <form class="space-y-8">
+    <!-- RIGHT FORM -->
+    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-lg">
+      <form class="space-y-8 w-full">
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input type="text" placeholder="Name *" required
-              class="w-full border-0 border-b border-gray-300 focus:border-blue-500 focus:ring-0 outline-none text-gray-800 bg-transparent" />
-            <input type="text" placeholder="Phone *" required
-              class="w-full border-0 border-b border-gray-300 focus:border-blue-500 focus:ring-0 outline-none text-gray-800 bg-transparent" />
-          </div>
+        <!-- Name + Phone -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input
+            type="text"
+            placeholder="Name *"
+            required
+            class="w-full border-0 border-b border-gray-300 focus:border-blue-500
+            focus:ring-0 outline-none text-gray-800 bg-transparent"
+          />
+          <input
+            type="text"
+            placeholder="Phone *"
+            required
+            class="w-full border-0 border-b border-gray-300 focus:border-blue-500
+            focus:ring-0 outline-none text-gray-800 bg-transparent"
+          />
+        </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input type="email" placeholder="Email *" required
-              class="w-full border-0 border-b border-gray-300 focus:border-blue-500 focus:ring-0 outline-none text-gray-800 bg-transparent" />
-            <input type="text" placeholder="Company Name *" required
-              class="w-full border-0 border-b border-gray-300 focus:border-blue-500 focus:ring-0 outline-none text-gray-800 bg-transparent" />
-          </div>
+        <!-- Email + Company -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input
+            type="email"
+            placeholder="Email *"
+            required
+            class="w-full border-0 border-b border-gray-300 focus:border-blue-500
+            focus:ring-0 outline-none text-gray-800 bg-transparent"
+          />
+          <input
+            type="text"
+            placeholder="Company Name *"
+            required
+            class="w-full border-0 border-b border-gray-300 focus:border-blue-500
+            focus:ring-0 outline-none text-gray-800 bg-transparent"
+          />
+        </div>
 
-          <input type="text" placeholder="Subject *" required
-            class="w-1/2 border-0 border-b border-gray-300 focus:border-blue-500 focus:ring-0 outline-none text-gray-800 bg-transparent" />
+        <!-- Subject -->
+        <input
+          type="text"
+          placeholder="Subject *"
+          required
+          class="w-full lg:w-1/2 border-0 border-b border-gray-300 focus:border-blue-500
+          focus:ring-0 outline-none text-gray-800 bg-transparent"
+        />
 
-          <textarea rows="4" placeholder="Type Message Here"
-            class="w-full border-0 border-b border-gray-300 focus:border-blue-500 focus:ring-0 outline-none text-gray-800 bg-transparent"></textarea>
+        <!-- Message -->
+        <textarea
+          rows="4"
+          placeholder="Type Message Here"
+          class="w-full border-0 border-b border-gray-300 focus:border-blue-500
+          focus:ring-0 outline-none text-gray-800 bg-transparent resize-none"
+        ></textarea>
 
-          <div class="border border-gray-300 rounded-md p-4 flex items-center justify-start gap-3 max-w-[300px] ml-[2px] mx-auto">
-            <input type="checkbox" id="robot" class="w-5 h-5" />
-            <label for="robot" class="text-gray-700">I'm not a robot</label>
-            <img src="/assets/images/recaptcha.png" alt="reCAPTCHA" class="h-6 ml-auto" />
-          </div>
+        <!-- reCAPTCHA -->
+        <div
+          class="border border-gray-300 rounded-md p-4 flex items-center gap-3
+          max-w-[300px] mx-auto md:mx-0"
+        >
+          <input type="checkbox" class="w-5 h-5" />
+          <span class="text-gray-700 text-sm md:text-base">I'm not a robot</span>
+          <img src="/assets/images/recaptcha.png" class="h-6 ml-auto" />
+        </div>
 
-          <button type="submit"
-            class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md hover:bg-blue-700 transition">
-            SEND MESSAGE
-          </button>
+        <!-- Button -->
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md
+          hover:bg-blue-700 transition"
+        >
+          SEND MESSAGE
+        </button>
       </form>
-
     </div>
-
   </div>
 </section>
-
-
-
-

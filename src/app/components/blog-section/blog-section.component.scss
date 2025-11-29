@@ -109,14 +109,14 @@
       }
 
       .read-more {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         font-weight: 600;
-        color: #000;
+        color: hsl(226, 67%, 54%);
         text-decoration: none;
         transition: 0.3s ease;
 
         &:hover {
-          color: #4a6cf7;
+          color: #1b45f0;
         }
       }
     }
