@@ -1,127 +1,141 @@
+<!-- TOP HERO BANNER -->
 <section
-  class="w-full h-[295px] bg-cover bg-center relative filter contrast-150 mt-[-60px]"
+  class="w-full h-[250px] md:h-[295px] bg-cover bg-center relative filter contrast-150 mt-[-60px]"
   style="background-image: url('/assets/images/main-banner-Accric.png'); font-family: 'Inter', sans-serif;"
 >
-  <!-- Dark transparent overlay -->
+  <!-- Overlay -->
   <div class="absolute inset-0 bg-[#001A5755]"></div>
 
   <!-- Center Content -->
-  <div class="relative h-full flex items-center justify-center" style="font-family: Cambria, 'Times New Roman', serif;">
-    <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold text-center">
-     Certificate Verification
+  <div class="relative h-full flex items-center justify-center text-center"
+       style="font-family: Cambria, 'Times New Roman', serif;">
+    <h1 class="text-white text-3xl md:text-5xl lg:text-6xl font-bold">
+      Certificate Verification
     </h1>
   </div>
 </section>
 
-<section 
-  class="w-full  bg-[#e9e8e8] bg-cover bg-no-repeat bg-center flex justify-center items-start py-16 px-4"
-  
->
 
-  <!-- White Card with fixed size -->
- <div
-  class="bg-white rounded-[30px] shadow-md 
-         p-8 md:p-12 lg:p-16
-         w-full max-w-[1200px] h-auto lg:h-auto relative"
->
 
-  <!-- Heading -->
-  <h2 class="text-[32px] md:text-[38px] font-bold mb-4" style="font-family: Cambria, 'Times New Roman', serif;">
-    Certificate Verification
-  </h2>
+<!-- MAIN SECTION -->
+<section class="w-full bg-[#e9e8e8] flex justify-center items-start py-10 md:py-16 px-4">
 
-  <!-- Subtitle -->
-  <p class="text-[16px] md:text-[18px] text-gray-700 leading-relaxed mb-6" style="font-family: Cambria, 'Times New Roman', serif;">
-    Kindly enter the exact Registration Number of Certified Client.
-  </p>
+  <!-- WHITE CARD -->
+  <div
+    class="bg-white rounded-[30px] shadow-md w-full max-w-[1200px] p-6 sm:p-10 md:p-12 lg:p-16"
+  >
 
-  <p class="text-[16px] md:text-[18px] text-gray-700 leading-relaxed mb-6" style="font-family: Cambria, 'Times New Roman', serif;">
-    (The Registration Number is printed on your ACCRIC Certificate)
-  </p>
+    <!-- Heading -->
+    <h2 class="text-2xl md:text-[38px] font-bold mb-4"
+        style="font-family: Cambria, 'Times New Roman', serif;">
+      Certificate Verification
+    </h2>
 
-  <!-- Input Label -->
-  <label class="block text-[16px] font-semibold text-[#002b7f] mb-2" style="font-family: Cambria, 'Times New Roman', serif;">
-    Enter Your Certificate Number*
-  </label>
+    <!-- Subtitles -->
+    <p class="text-[15px] md:text-[18px] text-gray-700 leading-relaxed mb-3"
+       style="font-family: Cambria, 'Times New Roman', serif;">
+      Kindly enter the exact Registration Number of Certified Client.
+    </p>
 
-  <!-- INPUT + BUTTON SIDE BY SIDE -->
-  <div class="flex items-center gap-4 mb-6"> 
-    <input
-      type="text"
-      placeholder="xx-xx-xxxxx19"
-      class="block w-[400px] border border-[#d9d9d9] rounded-md h-[55px] px-4 text-[16px] outline-none focus:ring-2 focus:ring-blue-300"
-      [(ngModel)]="regNumber"
-    />
+    <p class="text-[15px] md:text-[18px] text-gray-700 leading-relaxed mb-6"
+       style="font-family: Cambria, 'Times New Roman', serif;">
+      (The Registration Number is printed on your ACCRIC Certificate)
+    </p>
 
-    <button
-      class="px-10 py-3 rounded-full text-white text-[17px] font-semibold" style="font-family: Cambria, 'Times New Roman', serif;"
-      style="background: linear-gradient(90deg, #EFF6FF, #2563EB);"
-      type="button"
-      (click)="showTable()"
-    >
-      Verify
-    </button>
-  </div>
 
-  <p *ngIf="errorMessage" class="text-red-600 text-[15px] mt-2">
-    {{ errorMessage }}
-  </p>
+    <!-- Input Label -->
+    <label class="block text-[16px] font-semibold text-[#002b7f] mb-2"
+           style="font-family: Cambria, 'Times New Roman', serif;">
+      Enter Your Certificate Number*
+    </label>
 
-  
-  <div *ngIf="isTableVisible" class="mt-6 flex justify-center w-full">
-    <div class="bg-white shadow-lg rounded-xl w-full max-w-[650px] overflow-hidden" style="font-family: Cambria, 'Times New Roman', serif;" >
-      
-    
-      <div class="bg-blue-100 text-center py-2 font-semibold border-b rounded-t-xl"  style="font-family: Cambria, 'Times New Roman', serif;">
-        Certificate Recor
-      </div>
 
-    
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm md:text-base">
-          <tr class="border-b">
-            <td class="p-4 font-semibold w-[40%] bg-gray-50">Certificate No</td>
-            <td class="p-4">{{ certificate.certificateNo || '' }}</td>
-          </tr>
+    <!-- INPUT + BUTTON RESPONSIVE -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 mb-4">
 
-          <tr class="border-b">
-            <td class="p-4 font-semibold bg-gray-50">Company Name</td>
-            <td class="p-4">{{ certificate.companyName || '' }}</td>
-          </tr>
+      <input
+        type="text"
+        placeholder="xx-xx-xxxxx19"
+        class="w-full sm:w-[400px] border border-[#d9d9d9] rounded-md h-[55px] px-4
+               text-[16px] outline-none focus:ring-2 focus:ring-blue-300"
+        [(ngModel)]="regNumber"
+      />
 
-          <tr class="border-b">
-            <td class="p-4 font-semibold bg-gray-50">Classification</td>
-            <td class="p-4">{{ certificate.classification || '' }}</td>
-          </tr>
+      <button
+        class="w-full sm:w-auto px-10 py-3 rounded-full text-white text-[17px] font-semibold"
+        style="font-family: Cambria, 'Times New Roman', serif; background: linear-gradient(90deg, #EFF6FF, #2563EB);"
+        type="button"
+        (click)="showTable()"
+      >
+        Verify
+      </button>
+    </div>
 
-          <tr class="border-b">
-            <td class="p-4 font-semibold bg-gray-50">Scope</td>
-            <td class="p-4">{{ certificate.scope || '' }}</td>
-          </tr>
 
-          <tr class="border-b">
-            <td class="p-4 font-semibold bg-gray-50">Date of Issue</td>
-            <td class="p-4">{{ certificate.issueDate || '' }}</td>
-          </tr>
+    <!-- Error Message -->
+    <p *ngIf="errorMessage" class="text-red-600 text-[15px] mt-1">
+      {{ errorMessage }}
+    </p>
 
-          <tr class="border-b">
-            <td class="p-4 font-semibold bg-gray-50">Date of Valid</td>
-            <td class="p-4">{{ certificate.validDate || '' }}</td>
-          </tr>
 
-          <tr>
-            <td class="p-4 font-semibold bg-gray-50">Status</td>
-            <td class="p-4">{{ certificate.status || '' }}</td>
-          </tr>
-        </table>
+
+    <!-- CERTIFICATE TABLE -->
+    <div *ngIf="isTableVisible" class="mt-8 flex justify-center w-full">
+
+      <div
+        class="bg-white shadow-lg rounded-xl w-full max-w-[650px] overflow-hidden"
+        style="font-family: Cambria, 'Times New Roman', serif;"
+      >
+
+        <!-- Header -->
+        <div class="bg-blue-100 text-center py-3 font-semibold border-b rounded-t-xl">
+          Certificate Record
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm md:text-base">
+            <tr class="border-b">
+              <td class="p-4 font-semibold w-[40%] bg-gray-50">Certificate No</td>
+              <td class="p-4">{{ certificate.certificateNo || '' }}</td>
+            </tr>
+
+            <tr class="border-b">
+              <td class="p-4 font-semibold bg-gray-50">Company Name</td>
+              <td class="p-4">{{ certificate.companyName || '' }}</td>
+            </tr>
+
+            <tr class="border-b">
+              <td class="p-4 font-semibold bg-gray-50">Classification</td>
+              <td class="p-4">{{ certificate.classification || '' }}</td>
+            </tr>
+
+            <tr class="border-b">
+              <td class="p-4 font-semibold bg-gray-50">Scope</td>
+              <td class="p-4">{{ certificate.scope || '' }}</td>
+            </tr>
+
+            <tr class="border-b">
+              <td class="p-4 font-semibold bg-gray-50">Date of Issue</td>
+              <td class="p-4">{{ certificate.issueDate || '' }}</td>
+            </tr>
+
+            <tr class="border-b">
+              <td class="p-4 font-semibold bg-gray-50">Date of Valid</td>
+              <td class="p-4">{{ certificate.validDate || '' }}</td>
+            </tr>
+
+            <tr>
+              <td class="p-4 font-semibold bg-gray-50">Status</td>
+              <td class="p-4">{{ certificate.status || '' }}</td>
+            </tr>
+          </table>
+        </div>
+
       </div>
 
     </div>
+
   </div>
 
-</div>
-
-
-
-  
 </section>
