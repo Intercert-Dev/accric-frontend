@@ -114,9 +114,11 @@
         color: hsl(226, 67%, 54%);
         text-decoration: none;
         transition: 0.3s ease;
+      
 
-        &:hover {
+      &:hover {
           color: #1b45f0;
+          text-decoration: underline;
         }
       }
     }
