@@ -40,7 +40,7 @@ export class BusinessExcellenceComponent {
   }
 
   submitForm() {
-    this.http.post('/send-mail', this.consultationForm.value).subscribe({
+    this.http.post('https://accric-frontend.vercel.app/api/send-mail', this.consultationForm.value).subscribe({
       next: () => {
         alert("Email sent successfully!");
         this.consultationForm.reset();
