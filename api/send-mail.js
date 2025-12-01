@@ -16,6 +16,7 @@ export default async function handler(req, res) {
   }
 
   const { name, email, number, company, subject, message } = req.body;
+  const logoPath = join(process.cwd(), "src", "assets", "images", "main-logo1.png");
 
   try {
     const transporter = nodemailer.createTransport({
@@ -29,7 +30,7 @@ export default async function handler(req, res) {
     });
 
     // Hosted image
-    const logoUrl = "https://accric-frontend.vercel.app/main-logo1.png";
+    const logoUrl = "main-logo1.png";
 
     const mailOptions = {
       from: `"Accric" <noreply@accric.com>`,
@@ -39,7 +40,7 @@ export default async function handler(req, res) {
         <div style="font-family: Arial; background:#f4f4f4; padding:20px;">
           <div style="max-width:600px;background:#fff;margin:auto;border-radius:10px;overflow:hidden;">
             <div style="background:#87CEFA;padding:12px;text-align:center;">
-              <img src="${logoUrl}" height="60" />
+              <img src="cid:accric_logo" height="60" />
               <h2 style="color:#fff;margin-top:5px;">New Contact Enquiry</h2>
             </div>
 
@@ -54,7 +55,14 @@ export default async function handler(req, res) {
             </div>
           </div>
         </div>
-      `
+      `,
+       attachments: [
+        {
+          filename: "main-logo1.png",
+          path: logoPath,
+          cid: "accric_logo"
+        }
+      ]
     };
 
     await transporter.sendMail(mailOptions);
