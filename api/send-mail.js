@@ -57,7 +57,19 @@ export default async function handler(req, res) {
               ${createRow("🏢", "Company", company)}
               ${createRow("📝", "Subject", subject)}
               ${createRow("💬", "Message", message)}
+         <!-- Reply Button -->
+          <div style="margin-top:25px; text-align:center;">
+            <a href="mailto:${email}"
+              style="display:inline-block; background:#0b2c6a; color:#fff; padding:12px 20px; text-decoration:none; border-radius:6px; font-size:14px;">
+              📩 Reply to ${name}
+            </a>
+          </div>
             </div>
+             <!-- Footer -->
+            <div style="background:#87CEFA; padding:15px; text-align:center; font-size:13px; color:#333;">
+              This message was generated from your website contact form.
+            </div>
+
           </div>
         </div>
       `,
