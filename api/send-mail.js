@@ -43,7 +43,14 @@ export default async function handler(req, res) {
             </div>
 
             <div style="padding:25px;">
-              ${createRow("📅", "Submitted On", new Date().toLocaleString())}
+              ${createRow("📅", "Submitted On", new Date().toLocaleString('en-US', {
+                                                                          weekday: 'long',
+                                                                          year: 'numeric',
+                                                                          month: 'long',
+                                                                          day: 'numeric',
+                                                                          hour: '2-digit',
+                                                                          minute: '2-digit'
+          }))}
               ${createRow("🧑", "Name", name)}
               ${createRow("📧", "Email", email)}
               ${createRow("📞", "Phone", number)}
