@@ -45,14 +45,19 @@ export class WhatsupIconComponent {
   }
 
   submitForm() {
-    this.http.post('/send-mail', this.consultationForm.value).subscribe({
-      next: () => {
-        alert("Email sent successfully!");
-        this.consultationForm.reset();
-      },
-      error: () => {
-        alert("Failed to send email.");
-      }
-    });
-  }
+  this.http.post(
+    'https://accric-frontend.vercel.app/api/send-mail',
+    this.consultationForm.value
+  ).subscribe({
+    next: () => {
+      alert("Email sent successfully!");
+      this.consultationForm.reset();
+    },
+    error: (err) => {
+      console.error(err);
+      alert("Failed to send email.");
+    }
+  });
+}
+
 }
