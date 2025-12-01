@@ -47,11 +47,12 @@
 
     <!-- RIGHT FORM -->
     <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-lg">
-      <form class="space-y-8 w-full">
+      <form class="space-y-8 w-full" (ngSubmit)="submitForm()" [formGroup]="consultationForm">
 
         <!-- Name + Phone -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
+            formControlName="name"
             type="text"
             placeholder="Name *"
             required
@@ -59,6 +60,7 @@
             focus:ring-0 outline-none text-gray-800 bg-transparent"
           />
           <input
+            formControlName="number"
             type="text"
             placeholder="Phone *"
             required
@@ -70,6 +72,7 @@
         <!-- Email + Company -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
+            formControlName="email"
             type="email"
             placeholder="Email *"
             required
@@ -77,6 +80,7 @@
             focus:ring-0 outline-none text-gray-800 bg-transparent"
           />
           <input
+            formControlName="company"
             type="text"
             placeholder="Company Name *"
             required
@@ -87,6 +91,7 @@
 
         <!-- Subject -->
         <input
+          formControlName="subject"
           type="text"
           placeholder="Subject *"
           required
@@ -96,7 +101,8 @@
 
         <!-- Message -->
         <textarea
-          rows="4"
+          formControlName="message"
+          rows="3"
           placeholder="Type Message Here"
           class="w-full border-0 border-b border-gray-300 focus:border-blue-500
           focus:ring-0 outline-none text-gray-800 bg-transparent resize-none"

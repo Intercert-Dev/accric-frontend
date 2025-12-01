@@ -50,16 +50,33 @@
   </div>
 
   <!-- Form Body -->
-  <div class="p-5 space-y-1">
-    <input type="text" placeholder="Name" class="w-full border rounded-lg p-2" />
-    <input type="email" placeholder="Email" class="w-full border rounded-lg p-2" />
-    <input type="number" placeholder="Number" class="w-full border rounded-lg p-2" />
-    <input type="text" placeholder="Company Name" class="w-full border rounded-lg p-2" />
-    <input type="text" placeholder="Subject" class="w-full border rounded-lg p-2" />
-    <textarea placeholder="Textarea" class="w-full border rounded-lg p-2 h-24"></textarea>
+  
+<form class="p-5 space-y-3" (ngSubmit)="submitForm()" [formGroup]="consultationForm">
 
-    <button class="w-full bg-[#4e8df5] text-white py-2 rounded-lg font-semibold">
-      Submit
-    </button>
-  </div>
+  <input formControlName="name" type="text" placeholder="Name"
+    class="w-full border rounded-lg p-2" />
+
+  <input formControlName="email" type="email" placeholder="Email"
+    class="w-full border rounded-lg p-2" />
+
+  <input formControlName="number" type="number" placeholder="Number"
+    class="w-full border rounded-lg p-2" />
+
+  <input formControlName="company" type="text" placeholder="Company Name"
+    class="w-full border rounded-lg p-2" />
+
+  <input formControlName="subject" type="text" placeholder="Subject"
+    class="w-full border rounded-lg p-2" />
+
+  <textarea formControlName="message" placeholder="Textarea"
+    class="w-full border rounded-lg p-2 h-24"></textarea>
+
+  <button type="submit"
+    class="w-full bg-[#4e8df5] text-white py-2 rounded-lg font-semibold">
+    Submit
+  </button>
+
+</form>
+
+ 
 </div>

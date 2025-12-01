@@ -13,7 +13,7 @@
   </div>
 </section>
 <!-- MAIN CONTENT WRAPPER -->
-<div class="max-w-[1300px] mx-auto mt-12 mb-16 px-6 grid grid-cols-1 lg:grid-cols-3 gap-10">
+<div class="max-w-[1235px] mx-auto mt-12 mb-16 px-6 grid grid-cols-1 lg:grid-cols-3 gap-10">
 
   <!-- ================= LEFT CONTENT AREA ================= -->
  <div class="lg:col-span-2 space-y-10">
@@ -119,7 +119,7 @@
 
         <div class="space-y-2 text-gray-700 leading-relaxed">
 
-            
+            formControlName="message"
                 <h3 class="font-bold text-lg text-[#333333]">
                    ISO 13485: 2016
                 </h3>
@@ -135,7 +135,7 @@
            Asset Management System (AMS)
 
         </h2>
-
+formControlName="message"
         <div class="space-y-2 text-gray-700 leading-relaxed">
 
             
@@ -401,24 +401,24 @@
         <!-- CONTACT FORM -->
         <div class="bg-white shadow-md rounded-xl p-8">
 
-            <form class="space-y-5">
+            <form class="space-y-5" (ngSubmit)="submitForm()" [formGroup]="consultationForm">
 
-                <input type="text" placeholder="Name"
+                <input formControlName="name" type="text" placeholder="Name"
                 class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400">
 
-                <input type="email" placeholder="Email"
+                <input formControlName="email" type="email" placeholder="Email"
                 class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400">
                 
-                <input type="number" placeholder="Phone Number"
+                <input formControlName="number" type="number" placeholder="Phone Number"
                 class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400">
 
-                <input type="text" placeholder="Company Name"
+                <input formControlName="company" type="text" placeholder="Company Name"
                 class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400">
 
-                <input type="text" placeholder="Subject"
+                <input formControlName="subject" type="text" placeholder="Subject"
                 class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400">
 
-                <textarea rows="4" placeholder="Message"
+                <textarea formControlName="message" rows="4" placeholder="Message"
                 class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400"></textarea>
 
                 <!-- reCAPTCHA -->
