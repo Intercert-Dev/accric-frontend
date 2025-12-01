@@ -1,12 +1,11 @@
 import nodemailer from "nodemailer";
+import path from "path";
 
 export default async function handler(req, res) {
-  // ⭐ Allow CORS for local Angular dev
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // ⭐ Handle preflight request
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
@@ -16,7 +15,6 @@ export default async function handler(req, res) {
   }
 
   const { name, email, number, company, subject, message } = req.body;
-  const logoPath = join(process.cwd(), "src", "assets", "images", "main-logo1.png");
 
   try {
     const transporter = nodemailer.createTransport({
@@ -29,8 +27,8 @@ export default async function handler(req, res) {
       }
     });
 
-    // Hosted image
-    const logoUrl = "main-logo1.png";
+    // MUST reference the PUBLIC folder
+    const logoPath = path.join(process.cwd(), "public", "main-logo1.png");
 
     const mailOptions = {
       from: `"Accric" <noreply@accric.com>`,
@@ -56,10 +54,10 @@ export default async function handler(req, res) {
           </div>
         </div>
       `,
-       attachments: [
+      attachments: [
         {
           filename: "main-logo1.png",
-          path: logoPath,
+          path: logoPath,   // THIS MUST POINT TO /public
           cid: "accric_logo"
         }
       ]
