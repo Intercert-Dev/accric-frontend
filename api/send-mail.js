@@ -73,13 +73,13 @@ export default async function handler(req, res) {
           </div>
         </div>
       `,
-      attachments: [
-        {
-          filename: "main-logo1.png",
-          path: logoPath,   // THIS MUST POINT TO /public
-          cid: "accric_logo"
-        }
-      ]
+     attachments: [
+          {
+            path: logoPath,
+            cid: "accric_logo",
+            contentDisposition: "inline"   // Hides attachment in Gmail
+          }
+        ]
     };
 
     await transporter.sendMail(mailOptions);
