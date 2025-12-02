@@ -46,86 +46,131 @@
 
     <!-- RIGHT FORM -->
     <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-lg">
-      <form class="space-y-8  w-full" (ngSubmit)="submitForm()" [formGroup]="consultationForm">
+      <form class="space-y-8 w-full" (ngSubmit)="submitForm()" [formGroup]="consultationForm">
 
-        <!-- Name + Phone -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input
-            formControlName="name"
-            type="text"
-            placeholder="Name *"
-            required
-            class="w-full border-0 border-b border-gray-300 focus:border-blue-500
-            focus:ring-0 outline-none text-gray-800 bg-transparent"
-          />
-          <input
-            formControlName="number"
-            type="text"
-            placeholder="Phone *"
-            required
-            class="w-full border-0 border-b border-gray-300 focus:border-blue-500
-            focus:ring-0 outline-none text-gray-800 bg-transparent"
-          />
-        </div>
+  <!-- Name + Phone -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        <!-- Email + Company -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input
-            formControlName="email"
-            type="email"
-            placeholder="Email *"
-            required
-            class="w-full border-0 border-b border-gray-300 focus:border-blue-500
-            focus:ring-0 outline-none text-gray-800 bg-transparent"
-          />
-          <input
-            formControlName="company"
-            type="text"
-            placeholder="Company Name *"
-            required
-            class="w-full border-0 border-b border-gray-300 focus:border-blue-500
-            focus:ring-0 outline-none text-gray-800 bg-transparent"
-          />
-        </div>
+    <!-- Name -->
+    <div>
+      <input
+        formControlName="name"
+        type="text"
+        placeholder="Name *"
+        class="w-full border-0 border-b border-gray-300 focus:border-blue-500
+        focus:ring-0 outline-none text-gray-800 bg-transparent"
+      />
+      <p *ngIf="consultationForm.get('name')?.touched && consultationForm.get('name')?.invalid"
+         class="text-red-600 text-sm mt-1">
+        Name is required
+      </p>
+    </div>
 
-        <!-- Subject -->
-        <input
-          formControlName="subject"
-          type="text"
-          placeholder="Subject *"
-          required
-          class="w-full lg:w-1/2 border-0 border-b border-gray-300 focus:border-blue-500
-          focus:ring-0 outline-none text-gray-800 bg-transparent"
-        />
+    <!-- Phone -->
+    <div>
+      <input
+        formControlName="number"
+        type="text"
+        placeholder="Phone *"
+        class="w-full border-0 border-b border-gray-300 focus:border-blue-500
+        focus:ring-0 outline-none text-gray-800 bg-transparent"
+      />
+      <p *ngIf="consultationForm.get('number')?.touched && consultationForm.get('number')?.invalid"
+         class="text-red-600 text-sm mt-1">
+        Enter a valid 10-digit phone number
+      </p>
+    </div>
 
-        <!-- Message -->
-        <textarea
-          formControlName="message"
-          rows="3"
-          placeholder="Type Message Here"
-          class="w-full border-0 border-b border-gray-300 focus:border-blue-500
-          focus:ring-0 outline-none text-gray-800 bg-transparent resize-none"
-        ></textarea>
+  </div>
 
-        <!-- reCAPTCHA -->
-        <div
-          class="border border-gray-300 rounded-md p-4 flex items-center gap-3
-          max-w-[300px] mx-auto md:mx-0"
-        >
-          <input type="checkbox" class="w-5 h-5" />
-          <span class="text-gray-700 text-sm md:text-base">I'm not a robot</span>
-          <img src="/assets/images/recaptcha.png" class="h-6 ml-auto" />
-        </div>
+  <!-- Email + Company -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        <!-- Button -->
-        <button
-          type="submit"
-          class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md
-          hover:bg-blue-700 transition"
-        >
-          SEND MESSAGE
-        </button>
-      </form>
+    <!-- Email -->
+    <div>
+      <input
+        formControlName="email"
+        type="email"
+        placeholder="Email *"
+        class="w-full border-0 border-b border-gray-300 focus:border-blue-500
+        focus:ring-0 outline-none text-gray-800 bg-transparent"
+      />
+      <p *ngIf="consultationForm.get('email')?.touched && consultationForm.get('email')?.invalid"
+         class="text-red-600 text-sm mt-1">
+        Enter a valid email address
+      </p>
+    </div>
+
+    <!-- Company -->
+    <div>
+      <input
+        formControlName="company"
+        type="text"
+        placeholder="Company Name *"
+        class="w-full border-0 border-b border-gray-300 focus:border-blue-500
+        focus:ring-0 outline-none text-gray-800 bg-transparent"
+      />
+      <p *ngIf="consultationForm.get('company')?.touched && consultationForm.get('company')?.invalid"
+         class="text-red-600 text-sm mt-1">
+        Company name is required
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Subject -->
+  <div>
+    <input
+      formControlName="subject"
+      type="text"
+      placeholder="Subject *"
+      class="w-full lg:w-1/2 border-0 border-b border-gray-300 focus:border-blue-500
+      focus:ring-0 outline-none text-gray-800 bg-transparent"
+    />
+    <p *ngIf="consultationForm.get('subject')?.touched && consultationForm.get('subject')?.invalid"
+       class="text-red-600 text-sm mt-1">
+      Subject is required
+    </p>
+  </div>
+
+  <!-- Message -->
+  <div>
+    <textarea
+      formControlName="message"
+      rows="3"
+      placeholder="Type Message Here"
+      class="w-full border-0 border-b border-gray-300 focus:border-blue-500
+      focus:ring-0 outline-none text-gray-800 bg-transparent resize-none"
+    ></textarea>
+
+    <p *ngIf="consultationForm.get('message')?.touched && consultationForm.get('message')?.invalid"
+       class="text-red-600 text-sm mt-1">
+      Message must be at least 5 characters
+    </p>
+  </div>
+
+  <!-- reCAPTCHA (fake one) -->
+  <div
+    class="border border-gray-300 rounded-md p-4 flex items-center gap-3
+    max-w-[300px] mx-auto md:mx-0"
+  >
+    <input type="checkbox" class="w-5 h-5" />
+    <span class="text-gray-700 text-sm md:text-base">I'm not a robot</span>
+    <img src="/assets/images/recaptcha.png" class="h-6 ml-auto" />
+  </div>
+
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    [disabled]="consultationForm.invalid"
+    class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md
+    hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
+  >
+    SEND MESSAGE
+  </button>
+
+</form>
+
     </div>
   </div>
 </section>

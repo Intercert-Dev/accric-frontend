@@ -53,30 +53,76 @@
   
 <form class="p-5 space-y-3" (ngSubmit)="submitForm()" [formGroup]="consultationForm">
 
-  <input formControlName="name" type="text" placeholder="Name"
-    class="w-full border rounded-lg p-2" />
+  <!-- Name -->
+  <div>
+    <input formControlName="name" type="text" placeholder="Name"
+      class="w-full border rounded-lg p-2" />
+    <p *ngIf="consultationForm.get('name')?.touched && consultationForm.get('name')?.invalid"
+      class="text-red-600 text-sm mt-1">
+      Name is required
+    </p>
+  </div>
 
-  <input formControlName="email" type="email" placeholder="Email"
-    class="w-full border rounded-lg p-2" />
+  <!-- Email -->
+  <div>
+    <input formControlName="email" type="email" placeholder="Email"
+      class="w-full border rounded-lg p-2" />
+    <p *ngIf="consultationForm.get('email')?.touched && consultationForm.get('email')?.invalid"
+      class="text-red-600 text-sm mt-1">
+      Enter a valid email address
+    </p>
+  </div>
 
-  <input formControlName="number" type="number" placeholder="Number"
-    class="w-full border rounded-lg p-2" />
+  <!-- Number -->
+  <div>
+    <input formControlName="number" type="text" placeholder="Number"
+      class="w-full border rounded-lg p-2" />
+    <p *ngIf="consultationForm.get('number')?.touched && consultationForm.get('number')?.invalid"
+      class="text-red-600 text-sm mt-1">
+      Enter a valid 10-digit number
+    </p>
+  </div>
 
-  <input formControlName="company" type="text" placeholder="Company Name"
-    class="w-full border rounded-lg p-2" />
+  <!-- Company -->
+  <div>
+    <input formControlName="company" type="text" placeholder="Company Name"
+      class="w-full border rounded-lg p-2" />
+    <p *ngIf="consultationForm.get('company')?.touched && consultationForm.get('company')?.invalid"
+      class="text-red-600 text-sm mt-1">
+      Company name is required
+    </p>
+  </div>
 
-  <input formControlName="subject" type="text" placeholder="Subject"
-    class="w-full border rounded-lg p-2" />
+  <!-- Subject -->
+  <div>
+    <input formControlName="subject" type="text" placeholder="Subject"
+      class="w-full border rounded-lg p-2" />
+    <p *ngIf="consultationForm.get('subject')?.touched && consultationForm.get('subject')?.invalid"
+      class="text-red-600 text-sm mt-1">
+      Subject is required
+    </p>
+  </div>
 
-  <textarea formControlName="message" placeholder="Textarea"
-    class="w-full border rounded-lg p-2 h-24"></textarea>
+  <!-- Message -->
+  <div>
+    <textarea formControlName="message" placeholder="Textarea"
+      class="w-full border rounded-lg p-2 h-24"></textarea>
+    <p *ngIf="consultationForm.get('message')?.touched && consultationForm.get('message')?.invalid"
+      class="text-red-600 text-sm mt-1">
+      Message must be at least 5 characters
+    </p>
+  </div>
 
+  <!-- Submit Button -->
   <button type="submit"
-    class="w-full bg-[#4e8df5] text-white py-2 rounded-lg font-semibold">
+    [disabled]="consultationForm.invalid"
+    class="w-full bg-[#4e8df5] text-white py-2 rounded-lg font-semibold 
+           disabled:bg-gray-400 disabled:cursor-not-allowed">
     Submit
   </button>
 
 </form>
+
 
  
 </div>

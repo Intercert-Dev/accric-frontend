@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule,Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';   // ⭐ ADD THIS
 import { RouterLink } from '@angular/router';
@@ -24,17 +24,16 @@ export class WhatsupIconComponent {
 
   constructor(private fb: FormBuilder, private http: HttpClient) {}
 
-  ngOnInit() {
+    ngOnInit() {
     this.consultationForm = this.fb.group({
-      name: [''],
-      email: [''],
-      number: [''],
-      company: [''],
-      subject: [''],
-      message: ['']
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      number: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      company: ['', Validators.required],
+      subject: ['', Validators.required],
+      message: ['', [Validators.required, Validators.minLength(5)]],
     });
-  }
-
+}
   toggleConsultation() {
     this.showConsultation = !this.showConsultation;
     this.isOpen = false;

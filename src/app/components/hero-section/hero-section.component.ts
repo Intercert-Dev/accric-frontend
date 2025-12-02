@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 import { CommonModule } from '@angular/common';
@@ -21,12 +21,12 @@ export class HeroSectionComponent {
 
   ngOnInit() {
     this.consultationForm = this.fb.group({
-      name: [''],
-      email: [''],
-      number: [''],
-      company: [''],
-      subject: [''],
-      message: ['']
+      name: ['', Validators.required],
+      number: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      company: ['', Validators.required],
+      subject: ['', Validators.required],
+      message: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 
