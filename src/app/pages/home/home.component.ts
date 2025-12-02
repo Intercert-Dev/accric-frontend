@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AccricSectionComponent } from '../../components/accric-section/accric-section.component';
@@ -27,14 +27,15 @@ import { OurOfferingComponent } from '../../components/our-offering/our-offering
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   slides = [
     {
-      img: '/assets/images/banner3.png',
-      title: 'PCI DSS',
-      subtitle: 'A security standard for payment card transactions to prevent fraud and data breaches.'
-    },
+  img: '/assets/images/banner4.png',
+  title: 'PCI DSS Compliance',
+  subtitle: 'Protecting cardholder data through secure payment systems, encryption, access control, and continuous vulnerability management.'
+}
+,
 
     {
       img: 'https://accric.com/wp-content/themes/acrric/Assets/images/home/slide-1.jpg',
@@ -63,6 +64,32 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.startSlider();
   }
 
+  // New: compute actual header height at runtime and set CSS vars so hero starts from mid-nav
+  ngAfterViewInit(): void {
+  setTimeout(() => {
+    const header =
+      document.querySelector('header') ||
+      document.querySelector('.site-header') ||
+      document.querySelector('.navbar') ||
+      document.querySelector('.main-header');
+
+    const hero = document.querySelector('.hero-slider') as HTMLElement | null;
+
+    if (header && hero) {
+      const headerHeight = header.getBoundingClientRect().height || 140;
+      const headerHalf = headerHeight / 2;
+
+      document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+      document.documentElement.style.setProperty('--header-half', `${headerHalf}px`);
+
+      hero.style.marginTop = `-${headerHalf}px`;
+      hero.style.paddingTop = `-${headerHalf}px`;
+
+      (header as HTMLElement).style.zIndex =
+        (header as HTMLElement).style.zIndex || '9999';
+    }
+  }, 60);
+}
   startSlider() {
     this.interval = setInterval(() => {
 

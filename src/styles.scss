@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ✅ GLOBAL FONT FOR FULL SITE */
+// * {
+//   font-family: "Merriweather", serif !important;
+// }
+p,h2,h3,h1,h4{
+  font-family: "Merriweather", serif !important;
+}
+p {
+  font-size: 16px !important;
+}
+h2 {
+  font-size: 38px;
+}
+h3 {
+  font-size: 20px;
+}
+/* ✅ FORCE ALL PARAGRAPH TEXT TO USE MERRIWEATHER */
+// p,
+// h1, h2, h3, h4, h5, h6 {
+//   font-family: "Merriweather", serif !important;
+// }

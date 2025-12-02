@@ -1,81 +1,50 @@
 <div class="home-container">
 
   <!-- Hero Section -->
- 
-  <section class="relative w-full h-[64vh] overflow-hidden hero-slider mt-[-60px]">
+  <section
+    class="relative w-full overflow-hidden hero-slider hero-pulled"
+    style="height: calc(100vh - var(--header-height, 140px)); min-height: 520px;"
+  >
 
-  <!-- Background Slides -->
-  <ng-container *ngFor="let slide of slides; let i = index">
-    <img
-      [src]="slide.img"
-      class="absolute inset-0 w-full h-full object-cover transition-all duration-[2000ms] ease-out"
-      [class.opacity-100]="currentIndex === i"
-      [class.opacity-0]="currentIndex !== i"
-      [class.scale-100]="currentIndex === i"
-      [class.scale-110]="currentIndex !== i"
-      [style.zIndex]="currentIndex === i ? 10 : 1"
-    />
-  </ng-container>
+    <!-- Background Slides -->
+    <ng-container *ngFor="let slide of slides; let i = index">
+      <img
+        [src]="slide.img"
+        class="hero-slide-image absolute inset-0 w-full h-full object-cover transition-all duration-[2000ms] ease-out"
+        [class.opacity-100]="currentIndex === i"
+        [class.opacity-0]="currentIndex !== i"
+        [style.zIndex]="currentIndex === i ? 10 : 1"
+        alt="{{ slide.title }}"
+      />
+    </ng-container>
 
-  <!-- Dark overlay -->
-  <div class="absolute inset-0 bg-black/30"></div>
+    <!-- Light Overlay -->
+    <div class="absolute inset-0 bg-white/20"></div>
 
-  <!-- Text content — fully responsive -->
-  <div
-  class="
-    relative z-20
-    max-w-[600px]
+    <!-- ✅ HERO TEXT -->
+    <div class="hero-content layout-container z-20">
 
-   
-    px-6                   /* left+right padding, ~24px */
+      <h1
+        class="hero-title"
+        [class.opacity-100]="showText"
+        [class.opacity-0]="!showText"
+      >
+        {{ slides[currentIndex].title }}
+      </h1>
 
-    sm:mt-36               /* ~144px */
-    sm:px-12               /* ~48px padding */
+      <p
+        class="hero-subtitle"
+        [class.opacity-100]="showText"
+        [class.opacity-0]="!showText"
+      >
+        {{ slides[currentIndex].subtitle }}
+      </p>
 
-    md:mt-40               /* ~160px */
-    md:px-16               /* ~64px padding */
-  "
->
+    </div>
 
-    <!-- Title -->
-    <h1
-      class="
-        text-[#4F74C1]
-        text-3xl
-        sm:text-4xl
-        md:text-5xl
-        font-bold
-        leading-tight
-        mb-6
-        transition-all duration-700
-      "
-      [class.opacity-100]="showText"
-      [class.opacity-0]="!showText"
-    >
-      {{ slides[currentIndex].title }}
-    </h1>
+  </section>
 
-    <!-- Subtitle -->
-    <p
-      class="
-        text-[#556382]
-        text-lg
-        sm:text-xl
-        md:text-2xl
-        lg:text-3xl
-        transition-all duration-700 delay-200
-      "
-      [class.opacity-100]="showText"
-      [class.opacity-0]="!showText"
-    >
-      {{ slides[currentIndex].subtitle }}
-    </p>
-
-  </div>
-
-</section>
-
-  <!-- Other Sections -->
+  <!-- ✅ All Other Sections UNCHANGED -->
   <app-accric-section></app-accric-section>
   <app-our-offering></app-our-offering>
   <app-company-success></app-company-success>

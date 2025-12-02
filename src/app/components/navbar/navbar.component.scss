@@ -101,3 +101,12 @@ header section {
     background: #D6ECFF;
   }
 }
+/* --- NAVBAR HIDE ON SCROLL (MOBILE) --- */
+
+header {
+  transition: transform 0.4s ease;
+}
+
+.nav-hidden {
+  transform: translateY(-100%);
+}
