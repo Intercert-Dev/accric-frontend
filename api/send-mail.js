@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import path from "path";
+import fs from "fs";
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -29,6 +30,7 @@ export default async function handler(req, res) {
 
     // MUST reference the PUBLIC folder
     const logoPath = path.join(process.cwd(), "public", "main-logo1.png");
+    const logoBase64 = fs.readFileSync(logoPath).toString("base64");
 
     const mailOptions = {
       from: `"Accric" <noreply@accric.com>`,
@@ -73,11 +75,19 @@ export default async function handler(req, res) {
           </div>
         </div>
       `,
-     attachments: [
+    //  attachments: [
+    //       {
+    //         path: logoPath,
+    //         cid: "accric_logo",
+    //         contentDisposition: "inline"   // Hides attachment in Gmail
+    //       }
+    //     ]
+    attachments: [
           {
-            path: logoPath,
             cid: "accric_logo",
-            contentDisposition: "inline"   // Hides attachment in Gmail
+            content: logoBase64,
+            encoding: "base64",
+            contentDisposition: "inline"
           }
         ]
     };
