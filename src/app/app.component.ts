@@ -4,10 +4,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { WhatsupIconComponent } from './components/whatsup-icon/whatsup-icon.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
+import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, WhatsupIconComponent, FooterComponent],
+  imports: [RouterOutlet, NavbarComponent, WhatsupIconComponent, FooterComponent, ScrollTopComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
