@@ -44,18 +44,44 @@
           </div>
 
           <!-- Phone -->
-          <div>
-            <label class="font-light text-gray-700">Phone *</label>
-            <input
-              formControlName="number"
-              type="text"
-              class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
+          <!-- Phone -->
+          <!-- Phone -->
+        <div>
+          <label class="font-light text-gray-700">Phone *</label>
+
+          <div class="flex gap-3 items-center">
+
+            <!-- Country Code Dropdown -->
+            <select
+              formControlName="countryCode"
+              class="border-b border-gray-300 focus:border-blue-500 outline-none py-2 w-24"
             >
-            <p *ngIf="consultationForm.get('number')?.touched && consultationForm.get('number')?.invalid"
-              class="text-red-600 text-sm mt-1">
-              Enter a valid 10-digit phone number
-            </p>
+              <option *ngFor="let c of countryCodes" [value]="c.dial_code">
+                {{ c.flag }} {{ c.dial_code }}
+              </option>
+            </select>
+
+            <!-- Phone Input (Auto Format) -->
+            <div class="w-full max-w-[250px]">
+              <input
+                formControlName="number"
+                type="text"
+                class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
+                placeholder="Enter phone number"
+                (input)="formatPhone()" 
+              >
+            </div>
+
           </div>
+
+          <!-- Error -->
+          <p *ngIf="consultationForm.get('number')?.hasError('invalidPhone')"
+            class="text-red-600 text-sm mt-1">
+            Enter a valid phone number for the selected country.
+          </p>
+        </div>
+
+
 
           <!-- Email -->
           <div>

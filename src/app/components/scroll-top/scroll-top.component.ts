@@ -9,9 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./scroll-top.component.scss']
 })
 export class ScrollTopComponent {
-constructor() {
-  console.log("ScrollTopComponent LOADED");
-}
+
   showScroll = false;
 
   @HostListener('window:scroll', [])
