@@ -96,11 +96,11 @@ export class ContactusComponent {
   switch (code) {
 
     // 🇮🇳 India +91 → (987) 654-3210
-    case "+91":
-      formatted = value
-        .replace(/(\d{3})(\d{3})(\d{0,4})/, "($1) $2-$3")
-        .replace(/-$/, "");
-      break;
+     case "+91":
+    formatted = value
+      .replace(/(\d{5})(\d{0,5})/, "$1 $2")
+      .trim();
+    break;
 
     // 🇺🇸 USA +1 & 🇨🇦 Canada +1 → (650) 555-1234
     case "+1":
