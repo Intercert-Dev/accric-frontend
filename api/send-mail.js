@@ -34,7 +34,7 @@ export default async function handler(req, res) {
 
     const mailOptions = {
       from: `"Accric" <noreply@accric.com>`,
-      to: "ashutosh@intercert.com",
+      to: "info@accric.com",
       subject: "New Contact Form Submission",
       html: `
         <div style="font-family: Arial; background:#f4f4f4; padding:20px;">
