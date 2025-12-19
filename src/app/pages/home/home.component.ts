@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   slides = [
     {
-  img: '/assets/images/banner4.png',
+  img: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/banner4.png',
   title: 'PCI DSS Compliance',
   subtitle: 'Protecting cardholder data through secure payment systems, encryption, access control, and continuous vulnerability management.'
 }

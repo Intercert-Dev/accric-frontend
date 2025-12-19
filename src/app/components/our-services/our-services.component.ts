@@ -12,22 +12,22 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 export class OurServicesComponent {
   services = [
     {
-      icon: '/assets/images/governance.png',
+      icon: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/governance.png',
       title: 'Governance, risk & compliance services',
       link: '/services/governace-risk'
     },
     {
-      icon: '/assets/images/business.png',
+      icon: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/business.png',
       title: 'Business excellence & transformations services',
       link: '/services/business-excellence'
     },
     {
-      icon: '/assets/images/environment.png',
+      icon: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/environment.png',
       title: 'Environment & sustainability services',
       link: '/services/environment-sustainbility'
     },
     {
-      icon: '/assets/images/iso.png',
+      icon: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/so.png',
       title: 'ISO management system advisory services',
       link: '/services/iso-management-system-advisory'
     }
