@@ -43,17 +43,16 @@ export class PciCertificationComponent {
       this.errorMessage = "Please enter Registration Number";
       return;
     }
-
-    const apiUrl = `http://pci.accric.com/api/auth/client-certificate?certificateNo=${this.regNumber}`;
-
+    // const apiUrl = `http://pci.accric.com/api/auth/client-certificate?certificateNo=${this.regNumber}`;
+   const apiUrl = `http://pci.accric.com/api/auth/certificate-details/${this.regNumber}`;
     this.http.get<any>(apiUrl).subscribe({
       next: (res) => {
         if (res && res.data && Object.keys(res.data).length > 0) {
 
           this.certificate = {
             certificateNo: res.data.certificate_number_unique_id || '',
-            companyName: res.data.legal_entity_name || '',
-            classification: res.data.assessment_classification || '',
+            companyName: res.data.client?.legal_entity_name || '',
+            classification: res.data.classification || '',
             scope: res.data.audit_status || '',
             issueDate: res.data.certificate_issue_date || '',
             validDate: res.data.certificate_expiry_date || '',

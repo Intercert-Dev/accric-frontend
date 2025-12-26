@@ -209,8 +209,8 @@ export class ContactusComponent {
       phone: fullPhone
     };
 
-    this.http.post('https://accric-frontend.vercel.app/api/send-mail', formData)
-    // this.http.post('https://accric.com/api/send-mail', formData)
+    //this.http.post('https://accric-frontend.vercel.app/api/send-mail', formData)
+     this.http.post('https://accric.com/api/send-mail', formData)
 
       .subscribe({
         next: () => {
