@@ -1,89 +1,101 @@
-<footer class="footer-section text-lg text-[#9aaad1]" style="font-family: 'Times New Roman', serif;">
-  <div class="footer-container">
+<footer class="bg-[#f0f8ff] py-12 lg:py-16 text-[#9aaad1]" style="font-family: 'Times New Roman', serif;">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
 
-    <!-- ABOUT -->
-    <div class="footer-about">
-      <img src="https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/main-logo .svg" 
-      alt="Accric Logo" class="footer-logo mb-4" />
-      
-      <p class="w-[550px] leading-relaxed text-[#9aaad1]">
-        Accric is synthesis of "Accuracy" and "Adherence," working to signify
-        precision and commitment in managing businesses governance, risk,
-        assurance & compliances management by integration of people, process and
-        technology.
+      <!-- ABOUT -->
+      <div class="lg:col-span-1">
+        <img 
+          src="https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/main-logo%20.svg" 
+          alt="Accric Logo" 
+          class="h-14 sm:h-16 w-auto mb-6"
+          loading="lazy"
+        />
+        
+        <p class="text-base sm:text-lg leading-relaxed text-[#9aaad1] max-w-xl">
+          Accric is synthesis of "Accuracy" and "Adherence," working to signify
+          precision and commitment in managing businesses governance, risk,
+          assurance & compliances management by integration of people, process and
+          technology.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="lg:col-span-1">
+        <h3 class="text-xl sm:text-2xl font-bold text-[#7ea0ff] mb-6 tracking-wide">QUICK LINKS</h3>
+        <ul class="space-y-4">
+          <li>
+            <a routerLink="/home" 
+               class="text-base sm:text-lg font-semibold text-[#9aaad1] hover:text-[#7ea0ff] transition duration-300">
+              Home
+            </a>
+          </li>
+          <li>
+            <a routerLink="/about" 
+               class="text-base sm:text-lg font-semibold text-[#9aaad1] hover:text-[#7ea0ff] transition duration-300">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a routerLink="/why-accric" 
+               class="text-base sm:text-lg font-semibold text-[#9aaad1] hover:text-[#7ea0ff] transition duration-300">
+              Why Accric?
+            </a>
+          </li>
+          <li>
+            <a routerLink="/services/governace-risk" 
+               class="text-base sm:text-lg font-semibold text-[#9aaad1] hover:text-[#7ea0ff] transition duration-300">
+              Services
+            </a>
+          </li>
+          <li>
+            <a routerLink="/contact-us" 
+               class="text-base sm:text-lg font-semibold text-[#9aaad1] hover:text-[#7ea0ff] transition duration-300">
+              Contact Us
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ADDRESS -->
+      <div class="lg:col-span-1">
+        <h3 class="text-xl sm:text-2xl font-bold text-[#7ea0ff] mb-8 tracking-wide">ADDRESS</h3>
+
+        <ul class="space-y-6 text-[#9aaad1]">
+          <!-- Location -->
+          <li class="flex items-center gap-4">
+            <i class="fa-solid fa-location-dot text-2xl text-[#7ea0ff]"></i>
+            <span class="text-base sm:text-lg font-semibold">USA || India || UAE</span>
+          </li>
+
+          <!-- Phone 1 -->
+          <li class="flex items-center gap-4">
+            <i class="fa-solid fa-phone text-2xl text-[#7ea0ff]"></i>
+            <span class="text-base sm:text-lg font-semibold">+1 (334) 372-1976</span>
+          </li>
+
+          <!-- Phone 2 -->
+          <li class="flex items-center gap-4">
+            <i class="fa-solid fa-mobile-alt text-2xl text-[#7ea0ff]"></i>
+            <span class="text-base sm:text-lg font-semibold">+971-54 393 2510</span>
+          </li>
+
+          <!-- Email -->
+          <li class="flex items-center gap-4">
+            <a href="mailto:info@accric.com" class="hover:text-[#7ea0ff] transition">
+              <i class="fa-solid fa-envelope text-2xl text-[#7ea0ff]"></i>
+              <span class="text-base sm:text-lg font-semibold">info@accric.com</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- FOOTER BOTTOM -->
+    <div class="mt-12 pt-8 border-t border-gray-300 text-center">
+      <p class="text-[#9aaad1] text-sm sm:text-base tracking-wide">
+        © {{ currentYear }} Accric. All Rights Reserved.
       </p>
     </div>
-    <!-- QUICK LINKS -->
-    <div class="footer-links">
-      <h3 class="text-[#7ea0ff] font-bold mb-4 tracking-wide">QUICK LINKS</h3>
-      <ul class="space-y-2">
-        <li>
-          <a class="font-semibold text-[#9aaad1] hover:text-[#7ea0ff] transition" routerLink="/home">
-            Home
-          </a>
-        </li>
-        <li>
-          <a class="font-semibold text-[#9aaad1] hover:text-[#7ea0ff] transition" routerLink="/about">
-            About Us
-          </a>
-        </li>
-        <li>
-          <a class="font-semibold text-[#9aaad1] hover:text-[#7ea0ff] transition" routerLink="/why-accric">
-            Why Accric?
-          </a>
-        </li>
-        <li>
-          <a class="font-semibold text-[#9aaad1] hover:text-[#7ea0ff] transition" routerLink="/services/governace-risk">
-            Services
-          </a>
-        </li>
-        <li>
-          <a class="font-semibold text-[#9aaad1] hover:text-[#7ea0ff] transition" routerLink="/contact-us">
-            Contact Us
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- ✅ UPDATED ADDRESS (ICON + TEXT SIDE BY SIDE) -->
-    <div class="footer-address">
-      <h3 class="text-[#7ea0ff] font-bold mb-6 tracking-wide">ADDRESS</h3>
-
-      <ul class="space-y-6 text-[#9aaad1] font-semibold">
-
-        <!-- Location -->
-        <li class="flex flex-row items-center gap-3">
-          <i class="bi bi-geo-alt text-[#7ea0ff] text-2xl"></i>
-          <span>USA || India || UAE</span>
-        </li>
-
-        <!-- Phone 1 -->
-        <li class="flex flex-row items-center gap-3">
-          <i class="bi bi-telephone text-[#7ea0ff] text-2xl"></i>
-          <span>+1 (334) 372-1976</span>
-        </li>
-
-        <!-- Phone 2 -->
-        <li class="flex flex-row items-center gap-3">
-          <i class="bi bi-phone text-[#7ea0ff] text-2xl"></i>
-          <span>+971-54 393 2510</span>
-        </li>
-
-        <!-- Email -->
-        <li class="flex flex-row items-center gap-3">
-          <i class="bi bi-envelope text-[#7ea0ff] text-2xl"></i>
-          <span>info@accric.com</span>
-        </li>
-
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- FOOTER BOTTOM -->
-  <div class="footer-bottom mt-10 border-t border-gray-200 pt-5 text-center">
-    <p class="text-[#9aaad1] text-sm tracking-wide">
-      © {{ currentYear }} Accric. All Rights Reserved.
-    </p>
   </div>
 </footer>
