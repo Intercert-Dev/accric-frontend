@@ -27,7 +27,7 @@ export class OurServicesComponent {
       link: '/services/environment-sustainbility'
     },
     {
-      icon: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/so.png',
+      icon: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/iso.png',
       title: 'ISO management system advisory services',
       link: '/services/iso-management-system-advisory'
     }

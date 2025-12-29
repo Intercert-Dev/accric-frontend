@@ -1,68 +1,84 @@
 <section
-  class="w-full h-[280px] bg-cover bg-center relative filter contrast-150 mt-[-60px]"
+  class="w-full h-[280px] bg-cover bg-center relative filter contrast-150 mt-[-60px] sm:h-[350px] md:h-[400px]"
   style="background-image: url('https://accric.com/wp-content/themes/acrric/Assets/images/home/763.jpg');"
 >
   <div class="absolute inset-0 bg-[#001A5755]"></div>
 
-  <div class="relative h-full flex items-center justify-center">
-    <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold text-center">
-     Contact Us
+  <div class="relative h-full flex items-center justify-center px-4">
+    <h1 class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center">
+      Contact Us
     </h1>
   </div>
 </section>
 
-<section class="w-full py-20 flex justify-center bg-white">
-  <div class="max-w-6xl w-full bg-white shadow-xl rounded-xl p-10 grid grid-cols-1 lg:grid-cols-2 gap-12">
+<section class="w-full py-10 md:py-20 flex justify-center bg-white">
+  <div class="max-w-6xl w-full bg-white shadow-xl rounded-xl p-6 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
 
     <!-- Left Image -->
-    <div class="flex justify-center items-start">
+    <div class="flex justify-center items-start order-2 lg:order-1">
       <img 
-        src=" https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/contact-us.jpg"
+        src="https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/contact-us.jpg"
         alt="Contact"
-        class="rounded-xl h-[500px] w-[500px] object-cover shadow-lg"
+        class="rounded-xl w-full max-w-[400px] sm:max-w-[500px] h-auto object-cover shadow-lg"
       />
     </div>
 
     <!-- Right Form -->
-   <form class="space-y-8 w-full" (ngSubmit)="submitForm()" [formGroup]="consultationForm">
+    <form class="space-y-8 w-full order-1 lg:order-2" (ngSubmit)="submitForm()" [formGroup]="consultationForm">
 
-  <!-- Two Column Inputs -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Two Column Inputs -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 
-          <!-- Name -->
-          <div>
-            <label class="font-light text-gray-700">Name *</label>
-            <input 
-              formControlName="name" 
-              type="text"
-              class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
-            >
-            <p *ngIf="consultationForm.get('name')?.touched && consultationForm.get('name')?.invalid"
-              class="text-red-600 text-sm mt-1">
-              Name is required
-            </p>
-          </div>
+        <!-- Name -->
+        <div>
+          <label class="font-light text-gray-700">Name *</label>
+          <input 
+            formControlName="name" 
+            type="text"
+            class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
+          >
+          <p *ngIf="consultationForm.get('name')?.touched && consultationForm.get('name')?.invalid"
+            class="text-red-600 text-sm mt-1">
+            Name is required
+          </p>
+        </div>
 
-          <!-- Phone -->
-          <!-- Phone -->
-          <!-- Phone -->
+        <!-- Phone with Custom Country Code Dropdown -->
         <div>
           <label class="font-light text-gray-700">Phone *</label>
 
-          <div class="flex gap-3 items-center">
+          <div class="flex gap-3 items-start mt-2">
+            
+            <!-- Custom Country Code Dropdown -->
+            <div class="relative w-28">
+              <button
+                type="button"
+                (click)="toggleCountryDropdown()"
+                class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2 text-left flex items-center justify-between"
+              >
+                <span>{{ selectedCountry?.flag || '+91' }} {{ selectedCountry?.dial_code || '+91' }}</span>
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
 
-            <!-- Country Code Dropdown -->
-            <select
-              formControlName="countryCode"
-              class="border-b border-gray-300 focus:border-blue-500 outline-none py-2 w-24"
-            >
-              <option *ngFor="let c of countryCodes" [value]="c.dial_code">
-                {{ c.flag }} {{ c.dial_code }}
-              </option>
-            </select>
+              <!-- Dropdown List - Always opens downward -->
+              <div 
+                *ngIf="isCountryDropdownOpen"
+                class="absolute top-full left-0 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto z-50"
+              >
+                <div
+                  *ngFor="let c of countryCodes"
+                  (click)="selectCountry(c); isCountryDropdownOpen = false"
+                  class="px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                >
+                  {{ c.flag }} {{ c.dial_code }} {{ c.name }}
+                </div>
+              </div>
+            </div>
 
-            <!-- Phone Input (Auto Format) -->
-            <div class="w-full max-w-[250px]">
+            <!-- Phone Number Input -->
+            <div class="flex-1">
               <input
                 formControlName="number"
                 type="text"
@@ -71,7 +87,6 @@
                 (input)="formatPhone()" 
               >
             </div>
-
           </div>
 
           <!-- Error -->
@@ -81,87 +96,84 @@
           </p>
         </div>
 
-
-
-          <!-- Email -->
-          <div>
-            <label class="font-light text-gray-700">Email *</label>
-            <input 
-              formControlName="email"
-              type="email"
-              class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
-            >
-            <p *ngIf="consultationForm.get('email')?.touched && consultationForm.get('email')?.invalid"
-              class="text-red-600 text-sm mt-1">
-              Enter a valid email address
-            </p>
-          </div>
-
-          <!-- Company -->
-          <div>
-            <label class="font-light text-gray-700">Company Name *</label>
-            <input
-              formControlName="company"
-              type="text"
-              class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
-            >
-            <p *ngIf="consultationForm.get('company')?.touched && consultationForm.get('company')?.invalid"
-              class="text-red-600 text-sm mt-1">
-              Company name is required
-            </p>
-          </div>
-
+        <!-- Email -->
+        <div>
+          <label class="font-light text-gray-700">Email *</label>
+          <input 
+            formControlName="email"
+            type="email"
+            class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
+          >
+          <p *ngIf="consultationForm.get('email')?.touched && consultationForm.get('email')?.invalid"
+            class="text-red-600 text-sm mt-1">
+            Enter a valid email address
+          </p>
         </div>
 
-        <!-- Subject -->
+        <!-- Company -->
         <div>
-          <label class="font-light text-gray-700">Subject *</label>
-          <input 
-            formControlName="subject"
+          <label class="font-light text-gray-700">Company Name *</label>
+          <input
+            formControlName="company"
             type="text"
             class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
           >
-          <p *ngIf="consultationForm.get('subject')?.touched && consultationForm.get('subject')?.invalid"
+          <p *ngIf="consultationForm.get('company')?.touched && consultationForm.get('company')?.invalid"
             class="text-red-600 text-sm mt-1">
-            Subject is required
+            Company name is required
           </p>
         </div>
 
-        <!-- Message -->
-        <div>
-          <label class="font-light text-gray-700">Type Message Here *</label>
-          <textarea
-            formControlName="message"
-            rows="3"
-            class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
-          ></textarea>
+      </div>
 
-          <p *ngIf="consultationForm.get('message')?.touched && consultationForm.get('message')?.invalid"
-            class="text-red-600 text-sm mt-1">
-            Message must be at least 5 characters
-          </p>
-        </div>
-
-        <!-- Fake reCAPTCHA -->
-        <div class="border border-gray-300 rounded-md p-4 flex items-center gap-3 max-w-[244px]">
-          <input type="checkbox" class="w-5 h-5" />
-          <span class="text-gray-700">I'm not a robot</span>
-          <img src="/assets/images/recaptcha.png" alt="captcha" class="h-6 ml-auto" />
-        </div>
-
-        <!-- Button -->
-        <button 
-          type="submit"
-          [disabled]="consultationForm.invalid"
-          class="bg-[#69BFFA] text-white font-semibold px-10 py-3 ml-1 rounded-md mx-auto block 
-                hover:bg-[#4fa8e5] transition duration-300
-                disabled:bg-gray-400 disabled:cursor-not-allowed"
+      <!-- Subject -->
+      <div>
+        <label class="font-light text-gray-700">Subject *</label>
+        <input 
+          formControlName="subject"
+          type="text"
+          class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2"
         >
-          SEND MESSAGE
-        </button>
+        <p *ngIf="consultationForm.get('subject')?.touched && consultationForm.get('subject')?.invalid"
+          class="text-red-600 text-sm mt-1">
+          Subject is required
+        </p>
+      </div>
 
-      </form>
+      <!-- Message -->
+      <div>
+        <label class="font-light text-gray-700">Type Message Here *</label>
+        <textarea
+          formControlName="message"
+          rows="3"
+          class="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2 resize-none"
+        ></textarea>
 
+        <p *ngIf="consultationForm.get('message')?.touched && consultationForm.get('message')?.invalid"
+          class="text-red-600 text-sm mt-1">
+          Message must be at least 5 characters
+        </p>
+      </div>
+
+      <!-- Fake reCAPTCHA -->
+      <div class="border border-gray-300 rounded-md p-4 flex items-center gap-3 max-w-[300px]">
+        <input type="checkbox" class="w-5 h-5" />
+        <span class="text-gray-700">I'm not a robot</span>
+        <img src="/assets/images/recaptcha.png" alt="captcha" class="h-6 ml-auto" />
+      </div>
+
+      <!-- Button -->
+      <button 
+        type="submit"
+        [disabled]="consultationForm.invalid"
+        class="bg-[#69BFFA] text-white font-semibold px-10 py-3 rounded-md mx-auto block 
+              hover:bg-[#4fa8e5] transition duration-300
+              disabled:bg-gray-400 disabled:cursor-not-allowed"
+      >
+        SEND MESSAGE
+      </button>
+
+    </form>
 
   </div>
 </section>
@@ -170,7 +182,7 @@
   <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
 
     <!-- USA Office -->
-    <div class="bg-white rounded-xl shadow-md p-5 text-center transition-all duration-500 hover:-translate-y-3">
+    <div class="bg-white rounded-xl shadow-md p-6 text-center transition-all duration-500 hover:-translate-y-3">
       <h3 class="text-[20px] font-semibold text-[#1ca3ff] mb-2">
         United States Office
       </h3>
@@ -182,7 +194,7 @@
     </div>
 
     <!-- UAE Office -->
-    <div class="bg-white rounded-xl shadow-md p-5 text-center transition-all duration-500 hover:-translate-y-3">
+    <div class="bg-white rounded-xl shadow-md p-6 text-center transition-all duration-500 hover:-translate-y-3">
       <h3 class="text-[20px] font-semibold text-[#1ca3ff] mb-2">
         UAE Office
       </h3>
@@ -194,7 +206,7 @@
     </div>
 
     <!-- India Office -->
-    <div class="bg-white rounded-xl shadow-md p-5 text-center transition-all duration-500 hover:-translate-y-3">
+    <div class="bg-white rounded-xl shadow-md p-6 text-center transition-all duration-500 hover:-translate-y-3">
       <h3 class="text-[20px] font-semibold text-[#1ca3ff] mb-2">
         India Office
       </h3>
@@ -207,21 +219,16 @@
 
   </div>
 </section>
-<section class="office-section">
 
-  <div class="office-wrapper">
-    
-  </div>
-
-  <div class="map-container">
+<section class="office-section py-10">
+  <div class="map-container max-w-6xl mx-auto px-4">
     <iframe
       [src]="selectedMap | safeUrl"
       width="100%"
       height="450"
-      style="border:0;"
+      style="border:0; border-radius: 12px;"
       allowfullscreen=""
       loading="lazy"
     ></iframe>
   </div>
-
 </section>
