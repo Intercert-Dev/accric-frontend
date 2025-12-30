@@ -16,7 +16,7 @@ export class KeyCustomersComponent {
     { name: 'Desert Group', logo: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/desert-group.png' },
     { name: 'HLL Lifecare', logo: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/hll.png' },
     { name: 'Microlit', logo: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/microlit.png' },
-    { name: 'Indian Metrological', logo: 'ttps://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/indian-metrological.png' },
+    { name: 'Indian Metrological', logo: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/indian-metrological.png' },
     { name: 'Indian Railways', logo: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/indian-railways.png' },
     { name: 'Modern Coach Factory', logo: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/Modern_Coach_Factory_Raebareli .png' },
     { name: 'SPMCIL', logo: 'https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/spmcil-logo.png' },
