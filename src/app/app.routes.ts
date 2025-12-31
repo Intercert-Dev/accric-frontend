@@ -15,6 +15,7 @@ import { PciDssComponent } from './pages/pci-dss/pci-dss.component';
 
 
 import { ContactusComponent } from './pages/contact/contactus.component';
+import { AllBlogs } from './components/all-blogs/all-blogs';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -31,6 +32,7 @@ export const routes: Routes = [
   { path: 'blogs/implement-iso-27001.component', component: ImplementIso27001Component },
   { path: 'pci-certification', component: PciCertificationComponent },
   { path: 'pci-dss', component: PciDssComponent },
+  { path: 'all-blogs', component: AllBlogs },
 
   { path: 'contact-us', component: ContactusComponent },
 ];

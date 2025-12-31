@@ -1,32 +1,27 @@
 <section
-  class="relative w-full min-h-screen bg-cover filter bg-fixed 
-  bg-[url('https://accric.com/wp-content/themes/acrric/Assets/images/home/home-contact.jpg')]"
-  style="font-family: 'Times New Roman', serif;"
+  class="relative w-full min-h-screen bg-cover bg-center bg-fixed"
+  style="background-image: url('https://accric.com/wp-content/themes/acrric/Assets/images/home/home-contact.jpg'); font-family: 'Times New Roman', serif;"
 >
   <!-- Overlay -->
   <div class="absolute inset-0 bg-black/50"></div>
 
   <!-- Content Wrapper -->
   <div
-    class="relative z-10 container mx-auto px-6 md:px-14 py-16g:py-20 
-    flex flex-col lg:flex-row  pt-40  items-center justify-center gap-12 lg:gap-20
+    class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-14 py-20 lg:py-32
+    flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20
     text-center lg:text-left"
-  > 
-
+  >
     <!-- LEFT TEXT -->
     <div class="text-white max-w-xl">
       <h1
-        class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 
-        lg:-mt-[125px]"
-        style="font-family: 'Times New Roman', serif;"
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6"
       >
-        Your Partner in <br />
+        Your Partner in <br class="hidden sm:block" />
         <span>Governance, Risk & Compliance</span>
       </h1>
 
       <p
-        class="mb-4 text-sm md:text-base font-semibold leading-relaxed"
-        style="font-family: 'Times New Roman', serif;"
+        class="mb-4 text-sm sm:text-base font-semibold leading-relaxed"
       >
         At Accric, we blend Accuracy and Adherence to ensure businesses excel in
         governance, risk, assurance, and compliance management. Our expertise lies
@@ -34,8 +29,7 @@
         landscapes with confidence.
       </p>
       <p
-        class="text-sm md:text-base  font-semibold leading-relaxed"
-        style="font-family: 'Times New Roman', serif;"
+        class="text-sm sm:text-base font-semibold leading-relaxed"
       >
         With a meticulous approach and a commitment to industry standards, we deliver
         reliable, risk-aware, and compliance-driven strategies tailored to your business
@@ -45,133 +39,134 @@
     </div>
 
     <!-- RIGHT FORM -->
-    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-lg">
+    <div class="bg-white rounded-lg shadow-lg p-6 sm:p-8 w-full max-w-lg">
       <form class="space-y-8 w-full" (ngSubmit)="submitForm()" [formGroup]="consultationForm">
 
-  <!-- Name + Phone -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Name + Phone -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-    <!-- Name -->
-    <div>
-      <input
-        formControlName="name"
-        type="text"
-        placeholder="Name *"
-        class="w-full border-0 border-b border-gray-300 focus:border-blue-500
-        focus:ring-0 outline-none text-gray-800 bg-transparent"
-      />
-      <p *ngIf="consultationForm.get('name')?.touched && consultationForm.get('name')?.invalid"
-         class="text-red-600 text-sm mt-1">
-        Name is required
-      </p>
-    </div>
+          <!-- Name -->
+          <div>
+            <input
+              formControlName="name"
+              type="text"
+              placeholder="Name *"
+              class="w-full border-0 border-b-2 border-gray-300 focus:border-blue-500
+              focus:ring-0 outline-none text-gray-800 bg-transparent pb-2 transition-colors"
+            />
+            <p *ngIf="consultationForm.get('name')?.touched && consultationForm.get('name')?.invalid"
+               class="text-red-600 text-sm mt-1">
+              Name is required
+            </p>
+          </div>
 
-    <!-- Phone -->
-    <div>
-      <input
-        formControlName="number"
-        type="text"
-        placeholder="Phone *"
-        class="w-full border-0 border-b border-gray-300 focus:border-blue-500
-        focus:ring-0 outline-none text-gray-800 bg-transparent"
-      />
-      <p *ngIf="consultationForm.get('number')?.touched && consultationForm.get('number')?.invalid"
-         class="text-red-600 text-sm mt-1">
-        Enter a valid 10-digit phone number
-      </p>
-    </div>
+          <!-- Phone -->
+          <div>
+            <input
+              formControlName="number"
+              type="text"
+              placeholder="Phone *"
+              class="w-full border-0 border-b-2 border-gray-300 focus:border-blue-500
+              focus:ring-0 outline-none text-gray-800 bg-transparent pb-2 transition-colors"
+            />
+            <p *ngIf="consultationForm.get('number')?.touched && consultationForm.get('number')?.invalid"
+               class="text-red-600 text-sm mt-1">
+              Enter a valid 10-digit phone number
+            </p>
+          </div>
 
-  </div>
+        </div>
 
-  <!-- Email + Company -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Email + Company -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-    <!-- Email -->
-    <div>
-      <input
-        formControlName="email"
-        type="email"
-        placeholder="Email *"
-        class="w-full border-0 border-b border-gray-300 focus:border-blue-500
-        focus:ring-0 outline-none text-gray-800 bg-transparent"
-      />
-      <p *ngIf="consultationForm.get('email')?.touched && consultationForm.get('email')?.invalid"
-         class="text-red-600 text-sm mt-1">
-        Enter a valid email address
-      </p>
-    </div>
+          <!-- Email -->
+          <div>
+            <input
+              formControlName="email"
+              type="email"
+              placeholder="Email *"
+              class="w-full border-0 border-b-2 border-gray-300 focus:border-blue-500
+              focus:ring-0 outline-none text-gray-800 bg-transparent pb-2 transition-colors"
+            />
+            <p *ngIf="consultationForm.get('email')?.touched && consultationForm.get('email')?.invalid"
+               class="text-red-600 text-sm mt-1">
+              Enter a valid email address
+            </p>
+          </div>
 
-    <!-- Company -->
-    <div>
-      <input
-        formControlName="company"
-        type="text"
-        placeholder="Company Name *"
-        class="w-full border-0 border-b border-gray-300 focus:border-blue-500
-        focus:ring-0 outline-none text-gray-800 bg-transparent"
-      />
-      <p *ngIf="consultationForm.get('company')?.touched && consultationForm.get('company')?.invalid"
-         class="text-red-600 text-sm mt-1">
-        Company name is required
-      </p>
-    </div>
+          <!-- Company -->
+          <div>
+            <input
+              formControlName="company"
+              type="text"
+              placeholder="Company Name *"
+              class="w-full border-0 border-b-2 border-gray-300 focus:border-blue-500
+              focus:ring-0 outline-none text-gray-800 bg-transparent pb-2 transition-colors"
+            />
+            <p *ngIf="consultationForm.get('company')?.touched && consultationForm.get('company')?.invalid"
+               class="text-red-600 text-sm mt-1">
+              Company name is required
+            </p>
+          </div>
 
-  </div>
+        </div>
 
-  <!-- Subject -->
-  <div>
-    <input
-      formControlName="subject"
-      type="text"
-      placeholder="Subject *"
-      class="w-full lg:w-1/2 border-0 border-b border-gray-300 focus:border-blue-500
-      focus:ring-0 outline-none text-gray-800 bg-transparent"
-    />
-    <p *ngIf="consultationForm.get('subject')?.touched && consultationForm.get('subject')?.invalid"
-       class="text-red-600 text-sm mt-1">
-      Subject is required
-    </p>
-  </div>
+        <!-- Subject -->
+        <div>
+          <input
+            formControlName="subject"
+            type="text"
+            placeholder="Subject *"
+            class="w-full border-0 border-b-2 border-gray-300 focus:border-blue-500
+            focus:ring-0 outline-none text-gray-800 bg-transparent pb-2 transition-colors"
+          />
+          <p *ngIf="consultationForm.get('subject')?.touched && consultationForm.get('subject')?.invalid"
+             class="text-red-600 text-sm mt-1">
+            Subject is required
+          </p>
+        </div>
 
-  <!-- Message -->
-  <div>
-    <textarea
-      formControlName="message"
-      rows="3"
-      placeholder="Type Message Here"
-      class="w-full border-0 border-b border-gray-300 focus:border-blue-500
-      focus:ring-0 outline-none text-gray-800 bg-transparent resize-none"
-    ></textarea>
+        <!-- Message -->
+        <div>
+          <textarea
+            formControlName="message"
+            rows="4"
+            placeholder="Type Message Here"
+            class="w-full border-0 border-b-2 border-gray-300 focus:border-blue-500
+            focus:ring-0 outline-none text-gray-800 bg-transparent resize-none pb-2 transition-colors"
+          ></textarea>
 
-    <p *ngIf="consultationForm.get('message')?.touched && consultationForm.get('message')?.invalid"
-       class="text-red-600 text-sm mt-1">
-      Message must be at least 5 characters
-    </p>
-  </div>
+          <p *ngIf="consultationForm.get('message')?.touched && consultationForm.get('message')?.invalid"
+             class="text-red-600 text-sm mt-1">
+            Message must be at least 5 characters
+          </p>
+        </div>
 
-  <!-- reCAPTCHA (fake one) -->
-  <div
-    class="border border-gray-300 rounded-md p-4 flex items-center gap-3
-    max-w-[300px] mx-auto md:mx-0"
-  >
-    <input type="checkbox" class="w-5 h-5" />
-    <span class="text-gray-700 text-sm md:text-base">I'm not a robot</span>
-    <img src="https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/recaptcha.png"
-     class="h-6 ml-auto" />
-  </div>
+        <!-- reCAPTCHA (fake one) -->
+        <div
+          class="border border-gray-300 rounded-md p-4 flex flex-col sm:flex-row items-center gap-4
+          max-w-[300px] mx-auto"
+        >
+          <div class="flex items-center gap-3">
+            <input type="checkbox" class="w-5 h-5" />
+            <span class="text-gray-700 text-sm">I'm not a robot</span>
+          </div>
+          <img src="https://accric-pci-web.s3.ap-south-1.amazonaws.com/accric/Frontend/recaptcha.png"
+               alt="reCAPTCHA" class="h-10" />
+        </div>
 
-  <!-- Submit Button -->
-  <button
-    type="submit"
-    [disabled]="consultationForm.invalid"
-    class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md
-    hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
-  >
-    SEND MESSAGE
-  </button>
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          [disabled]="consultationForm.invalid"
+          class="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-md
+          hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed text-lg"
+        >
+          SEND MESSAGE
+        </button>
 
-</form>
-
+      </form>
     </div>
   </div>
 </section>
