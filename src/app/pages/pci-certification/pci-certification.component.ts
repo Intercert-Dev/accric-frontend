@@ -44,7 +44,7 @@ export class PciCertificationComponent {
       return;
     }
     // const apiUrl = `http://pci.accric.com/api/auth/client-certificate?certificateNo=${this.regNumber}`;
-   const apiUrl = `http://pci.accric.com/api/auth/certificate-details/${this.regNumber}`;
+   const apiUrl = `https://pci.accric.com/api/auth/certificate-details/${this.regNumber}`;
     this.http.get<any>(apiUrl).subscribe({
       next: (res) => {
         if (res && res.data && Object.keys(res.data).length > 0) {
