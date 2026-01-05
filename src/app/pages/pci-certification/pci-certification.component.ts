@@ -59,6 +59,9 @@ export class PciCertificationComponent {
             status: res.data.audit_status || ''
           };
 
+
+
+          
           this.isTableVisible = true;
 
         } else {
