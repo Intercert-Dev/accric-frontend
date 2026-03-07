@@ -92,7 +92,7 @@ export class ContactusComponent implements OnInit {
       id: 'india',
       title: 'India Office',
       company: 'ACCRIC Infotek Pvt Ltd',
-      address: '1403, Tower C6, Cleo County, Sector 121, Noida – 201301, India',
+      address: '403, I-thum Heights, A-16, Sector 62, Noida, 201301, India',
       mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.123456789!2d77.401234!3d28.567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a123456789%3A0xabcde1234567890!2sCleo%20County!5e0!3m2!1sen!2sin!4v1726685800000!5m2!1sen!2sin'
     }
   ];
