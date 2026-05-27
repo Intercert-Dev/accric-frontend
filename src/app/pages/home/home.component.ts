@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       img: 'https://accric.com/wp-content/themes/acrric/Assets/images/home/slide-1.jpg',
       title: 'Precision and Commitment in Governance & Compliance',
-      subtitle: 'Driving risk-aware, efficient, and compliant business operations with accuracy and integrityy.'
+      subtitle: 'Driving risk-aware, efficient, and compliant business operations with accuracy and integrity.'
     },
     {
       img: 'https://accric.com/wp-content/themes/acrric/Assets/images/home/slide-2.jpg',
