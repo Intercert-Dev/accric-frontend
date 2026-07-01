@@ -21,14 +21,22 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
-            ],
+  {
+    "glob": "**/*",
+    "input": "public"
+  },
+  {
+    "glob": "**/*",
+    "input": "node_modules/intl-tel-input/build/img",
+    "output": "img"
+  }
+],
+           "styles": [
+  "src/styles.scss",
+  "node_modules/intl-tel-input/build/css/intlTelInput.css",
+  "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+  "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
