@@ -1,4 +1,4 @@
-office-section {
+.office-section {
   padding: 40px 20px;
   font-family: 'Poppins', sans-serif;
   text-align: center;
@@ -17,13 +17,13 @@ office-section {
 }
 
 .office-card {
-  background: #ffffff;
+  background: #fff;
   padding: 25px 30px;
   border-radius: 12px;
   width: 330px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all .3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 
   h3 {
     color: #0a65c2;
@@ -43,17 +43,151 @@ office-section {
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   }
 }
 
 .map-container {
   width: 100%;
-  max-width: 100%;
-  height: auto;
 
   iframe {
     width: 100%;
     border-radius: 12px;
+    border: 0;
   }
+}
+
+:host ::ng-deep .iti {
+  width: 100%;
+   margin-top: -7px;
+  display: block;
+}
+
+:host ::ng-deep .iti input {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-bottom: 1px solid #d1d5db;
+  outline: none;
+  padding-left: 80px !important;
+  padding-right: 12px;
+  font-size: 15px;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+:host ::ng-deep .iti input:focus {
+  border-bottom: 1px solid #2563eb;
+}
+
+:host ::ng-deep .iti__country-container {
+  left: -20px;
+}
+
+:host ::ng-deep .iti__selected-country {
+  height: 48px;
+  padding: 0 12px;
+  background: transparent;
+  border: none;
+}
+
+:host ::ng-deep .iti__dropdown-content {
+  width: 320px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 9000;
+}
+
+:host ::ng-deep .iti__search-container {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  padding: 10px;
+  z-index: 2;
+}
+
+:host ::ng-deep .iti__search-container::before {
+  content: "🔍";
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+:host ::ng-deep .iti__search-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px 0 40px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #111827;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+:host ::ng-deep .iti__search-input:focus {
+  outline: none;
+  border-color: #1ca3ff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(28, 163, 255, 0.15);
+}
+
+:host ::ng-deep .iti__search-input::placeholder {
+  color: #9ca3af;
+}
+
+:host ::ng-deep .iti__country {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+:host ::ng-deep .iti__country:hover {
+  background: #eef6ff;
+}
+
+:host ::ng-deep .iti__country.iti__highlight {
+  background: #1ca3ff;
+  color: #fff;
+}
+
+:host ::ng-deep .iti__country.iti__highlight .iti__dial-code,
+:host ::ng-deep .iti__country.iti__highlight .iti__country-name {
+  color: #fff;
+}
+
+:host ::ng-deep .iti__flag-box {
+  margin-right: 10px;
+}
+
+:host ::ng-deep .iti__dial-code {
+  color: #6b7280;
+}
+
+:host ::ng-deep .iti__dropdown-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+:host ::ng-deep .iti__dropdown-content::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+:host ::ng-deep .iti__dropdown-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+:host ::ng-deep .iti__dropdown-content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

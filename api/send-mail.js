@@ -93,6 +93,7 @@ export default async function handler(req, res) {
     };
 
     await transporter.sendMail(mailOptions);
+    
     return res.json({ success: true });
 
   } catch (err) {

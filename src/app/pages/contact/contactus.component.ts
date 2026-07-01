@@ -1,11 +1,29 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+  inject,
+  PLATFORM_ID,
+} from '@angular/core';
+
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+
+import intlTelInput from 'intl-tel-input';
+
 import { SafeUrlPipe } from '../contact/safe-url.pipe';
-
-import { AsYouType, parsePhoneNumberFromString } from 'libphonenumber-js';
-
+declare var grecaptcha: any;
 @Component({
   selector: 'app-contact-us',
   standalone: true,
@@ -13,65 +31,27 @@ import { AsYouType, parsePhoneNumberFromString } from 'libphonenumber-js';
   templateUrl: './contactus.component.html',
   styleUrl: './contactus.component.scss',
 })
-export class ContactusComponent implements OnInit {
-
+export class ContactusComponent implements OnInit, AfterViewInit {
   consultationForm!: FormGroup;
+  @ViewChild('phoneInput')
+  phoneInput!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('recaptchaContainer')
+recaptchaContainer!: ElementRef;
+private platformId = inject(PLATFORM_ID);
+
+iti: any;
+
+siteKey = '6LfP5T4tAAAAAGEkX3gGcSyfR1_7jtYxFk4Ky_9U';
+
+captchaVerified = false;
+
+captchaError = false;
+
+// ADD THIS
+captchaWidgetId: number | null = null;
 
   // ⭐ NEW: For custom country dropdown
-  isCountryDropdownOpen = false;
-  selectedCountry: any;
-
-  countryCodes = [
-    { name: "Afghanistan", dial_code: "+93", code: "AF", flag: "🇦🇫" },
-    { name: "Albania", dial_code: "+355", code: "AL", flag: "🇦🇱" },
-    { name: "Algeria", dial_code: "+213", code: "DZ", flag: "🇩🇿" },
-    { name: "Argentina", dial_code: "+54", code: "AR", flag: "🇦🇷" },
-    { name: "Australia", dial_code: "+61", code: "AU", flag: "🇦🇺" },
-    { name: "Austria", dial_code: "+43", code: "AT", flag: "🇦🇹" },
-    { name: "Bangladesh", dial_code: "+880", code: "BD", flag: "🇧🇩" },
-    { name: "Belgium", dial_code: "+32", code: "BE", flag: "🇧🇪" },
-    { name: "Brazil", dial_code: "+55", code: "BR", flag: "🇧🇷" },
-    { name: "Canada", dial_code: "+1", code: "CA", flag: "🇨🇦" },
-    { name: "China", dial_code: "+86", code: "CN", flag: "🇨🇳" },
-    { name: "Denmark", dial_code: "+45", code: "DK", flag: "🇩🇰" },
-    { name: "Egypt", dial_code: "+20", code: "EG", flag: "🇪🇬" },
-    { name: "Finland", dial_code: "+358", code: "FI", flag: "🇫🇮" },
-    { name: "France", dial_code: "+33", code: "FR", flag: "🇫🇷" },
-    { name: "Germany", dial_code: "+49", code: "DE", flag: "🇩🇪" },
-    { name: "Hong Kong", dial_code: "+852", code: "HK", flag: "🇭🇰" },
-    { name: "India", dial_code: "+91", code: "IN", flag: "🇮🇳" },
-    { name: "Indonesia", dial_code: "+62", code: "ID", flag: "🇮🇩" },
-    { name: "Ireland", dial_code: "+353", code: "IE", flag: "🇮🇪" },
-    { name: "Italy", dial_code: "+39", code: "IT", flag: "🇮🇹" },
-    { name: "Japan", dial_code: "+81", code: "JP", flag: "🇯🇵" },
-    { name: "Kenya", dial_code: "+254", code: "KE", flag: "🇰🇪" },
-    { name: "Kuwait", dial_code: "+965", code: "KW", flag: "🇰🇼" },
-    { name: "Malaysia", dial_code: "+60", code: "MY", flag: "🇲🇾" },
-    { name: "Mexico", dial_code: "+52", code: "MX", flag: "🇲🇽" },
-    { name: "Nepal", dial_code: "+977", code: "NP", flag: "🇳🇵" },
-    { name: "Netherlands", dial_code: "+31", code: "NL", flag: "🇳🇱" },
-    { name: "New Zealand", dial_code: "+64", code: "NZ", flag: "🇳🇿" },
-    { name: "Nigeria", dial_code: "+234", code: "NG", flag: "🇳🇬" },
-    { name: "Norway", dial_code: "+47", code: "NO", flag: "🇳🇴" },
-    { name: "Oman", dial_code: "+968", code: "OM", flag: "🇴🇲" },
-    { name: "Pakistan", dial_code: "+92", code: "PK", flag: "🇵🇰" },
-    { name: "Philippines", dial_code: "+63", code: "PH", flag: "🇵🇭" },
-    { name: "Qatar", dial_code: "+974", code: "QA", flag: "🇶🇦" },
-    { name: "Russia", dial_code: "+7", code: "RU", flag: "🇷🇺" },
-    { name: "Saudi Arabia", dial_code: "+966", code: "SA", flag: "🇸🇦" },
-    { name: "Singapore", dial_code: "+65", code: "SG", flag: "🇸🇬" },
-    { name: "South Africa", dial_code: "+27", code: "ZA", flag: "🇿🇦" },
-    { name: "Spain", dial_code: "+34", code: "ES", flag: "🇪🇸" },
-    { name: "Sri Lanka", dial_code: "+94", code: "LK", flag: "🇱🇰" },
-    { name: "Sweden", dial_code: "+46", code: "SE", flag: "🇸🇪" },
-    { name: "Switzerland", dial_code: "+41", code: "CH", flag: "🇨🇭" },
-    { name: "Thailand", dial_code: "+66", code: "TH", flag: "🇹🇭" },
-    { name: "Turkey", dial_code: "+90", code: "TR", flag: "🇹🇷" },
-    { name: "UAE", dial_code: "+971", code: "AE", flag: "🇦🇪" },
-    { name: "United Kingdom", dial_code: "+44", code: "GB", flag: "🇬🇧" },
-    { name: "United States", dial_code: "+1", code: "US", flag: "🇺🇸" },
-    { name: "Vietnam", dial_code: "+84", code: "VN", flag: "🇻🇳" }
-  ];
 
   offices = [
     {
@@ -79,149 +59,485 @@ export class ContactusComponent implements OnInit {
       title: 'United States Office',
       company: 'ACCRIC LLC',
       address: '3010 LBJ Freeway, Ste# 1200, Dallas, Texas 75234, United States',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.201295386299!2d-96.80394668480052!3d32.9123140809305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c1f3b1b9b9b9b%3A0x7d1b5f3b015b1aa!2s3010%20LBJ%20Fwy%20%231200%2C%20Dallas%2C%20TX%2075234%2C%20USA!5e0!3m2!1sen!2sin!4v1726685658953!5m2!1sen!2sin'
+      mapUrl:
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6699.0294915318345!2d-96.88024962444631!3d32.910995873607824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c27755da43955%3A0x47adfb07b2eac3db!2s3010%20Lyndon%20B%20Johnson%20Fwy%2C%20Dallas%2C%20TX%2075234%2C%20USA!5e0!3m2!1sen!2sin!4v1782719064556!5m2!1sen!2sin',
     },
     {
       id: 'uae',
       title: 'UAE Office',
       company: 'ACCRIC International LLC-FZ',
       address: 'Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, UAE',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.184888965335!2d55.307013315009!3d25.154684983887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b6789abcde9%3A0xabcde1234567890!2sMeydan%20Grandstand!5e0!3m2!1sen!2sae!4v1726685700000!5m2!1sen!2sae'
+      mapUrl:
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.184888965335!2d55.307013315009!3d25.154684983887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b6789abcde9%3A0xabcde1234567890!2sMeydan%20Grandstand!5e0!3m2!1sen!2sae!4v1726685700000!5m2!1sen!2sae',
     },
     {
       id: 'india',
       title: 'India Office',
       company: 'ACCRIC Infotek Pvt Ltd',
       address: '403, I-thum Heights, A-16, Sector 62, Noida, 201301, India',
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.123456789!2d77.401234!3d28.567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a123456789%3A0xabcde1234567890!2sCleo%20County!5e0!3m2!1sen!2sin!4v1726685800000!5m2!1sen!2sin'
-    }
+      mapUrl:
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.123456789!2d77.401234!3d28.567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a123456789%3A0xabcde1234567890!2sCleo%20County!5e0!3m2!1sen!2sin!4v1726685800000!5m2!1sen!2sin',
+    },
   ];
 
   selectedMap = this.offices[0].mapUrl;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+  ) {}
 
   ngOnInit() {
-    // Set default selected country to India (+91)
-    this.selectedCountry = this.countryCodes.find(c => c.dial_code === '+91');
-
+    // Set default selected country to United States (+1)
     this.consultationForm = this.fb.group({
-      countryCode: ['+91', Validators.required],
-      number: ['', [Validators.required]],
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      company: ['', Validators.required],
-      subject: ['', Validators.required],
-      message: ['', [Validators.required, Validators.minLength(5)]],
+  number: ['', Validators.required],
+
+  name: [
+    '',
+    [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(50),
+      Validators.pattern(/^[a-zA-Z ]+$/),
+    ],
+  ],
+
+  email: [
+    '',
+    [
+      Validators.required,
+      Validators.email,
+      Validators.pattern(
+        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+      ),
+    ],
+  ],
+
+
+company: [
+  '',
+  [
+    Validators.required,
+    Validators.minLength(2),
+    Validators.maxLength(100),
+    Validators.pattern(/^[A-Za-z ]+$/),
+  ],
+],
+  subject: [
+  '',
+  [
+    Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(100),
+    Validators.pattern(/^[A-Za-z ]+$/),
+  ],
+],
+
+
+  message: [
+  '',
+  [
+    Validators.required,
+    Validators.minLength(10),
+    Validators.maxLength(500),
+    Validators.pattern(/^[A-Za-z0-9\s.,!?'"():;&\-\/]+$/),
+  ],
+],
+});
+  }
+
+ngAfterViewInit(): void {
+
+  if (!isPlatformBrowser(this.platformId)) {
+    return;
+  }
+
+  this.iti = intlTelInput(this.phoneInput.nativeElement, {
+    initialCountry: 'us',
+    separateDialCode: true,
+    nationalMode: true,
+    autoPlaceholder: 'aggressive'
+  });
+
+  this.phoneInput.nativeElement.addEventListener(
+    'countrychange',
+    () => {
+
+      const country = this.iti.getSelectedCountryData();
+
+      if (country.iso2 === 'in') {
+        this.phoneInput.nativeElement.maxLength = 10;
+      } else {
+        this.phoneInput.nativeElement.maxLength = 15;
+      }
+
+      this.phoneInput.nativeElement.value = '';
+
+      this.consultationForm.patchValue({
+        number: '',
+      });
+
+      this.consultationForm.get('number')?.setErrors(null);
+    }
+  );
+setTimeout(() => {
+
+  if (typeof grecaptcha === 'undefined') {
+    console.error('Google reCAPTCHA script not loaded.');
+    return;
+  }
+
+  this.captchaWidgetId = grecaptcha.render(
+    this.recaptchaContainer.nativeElement,
+    {
+      sitekey: this.siteKey,
+
+      callback: (token: string) => {
+
+        console.log('Captcha Token:', token);
+
+        this.captchaVerified = true;
+        this.captchaError = false;
+
+      },
+
+      'expired-callback': () => {
+
+        this.captchaVerified = false;
+        this.captchaError = true;
+
+      },
+
+      'error-callback': () => {
+
+        this.captchaVerified = false;
+        this.captchaError = true;
+
+        console.error('reCAPTCHA failed to load.');
+
+      }
+
+    }
+  );
+
+}, 500);
+}
+  allowOnlyLetters(event: KeyboardEvent) {
+    const char = event.key;
+
+    if (!/^[a-zA-Z ]$/.test(char)) {
+      event.preventDefault();
+    }
+  }
+
+onlyNumbers(event: any) {
+
+  const country = this.iti.getSelectedCountryData();
+
+  let value = event.target.value.replace(/\D/g, '');
+
+  if (country.iso2 === 'in') {
+
+    value = value.substring(0, 10);
+
+    // First digit must be 6-9
+    if (value.length > 0 && !/^[6-9]/.test(value)) {
+      value = '';
+    }
+
+    // Maximum 4 repeated digits at the beginning
+    if (this.hasInvalidStartingRepeats(value, 4)) {
+      value = value.slice(0, -1);
+      
+    }
+
+  } else {
+
+    value = value.substring(0, 15);
+
+    // Maximum 5 repeated digits at the beginning
+    if (this.hasInvalidStartingRepeats(value, 5)) {
+      value = value.slice(0, -1);
+    }
+
+  }
+
+  // Don't allow sequential digits of length 6 or more
+  if (this.hasSequentialDigits(value, 6)) {
+    value = value.slice(0, -1);
+  }
+
+  event.target.value = value;
+
+  this.consultationForm.patchValue({
+    number: value
+  });
+}
+
+allowCompanyInput(event: KeyboardEvent) {
+
+  const companyControl = this.consultationForm.get('company');
+  const char = event.key;
+
+  if (!/^[a-zA-Z ]$/.test(char)) {
+
+    event.preventDefault();
+
+    companyControl?.setErrors({
+      ...(companyControl.errors || {}),
+      invalidCharacter: true
     });
+
+    companyControl?.markAsTouched();
+
+  } else {
+
+    if (companyControl?.hasError('invalidCharacter')) {
+
+      const errors = { ...(companyControl.errors || {}) };
+      delete errors['invalidCharacter'];
+
+      companyControl.setErrors(
+        Object.keys(errors).length ? errors : null
+      );
+    }
+  }
+}
+
+preventCompanyPaste(event: ClipboardEvent) {
+
+  const text = event.clipboardData?.getData('text') || '';
+
+  if (!/^[A-Za-z ]+$/.test(text)) {
+    event.preventDefault();
   }
 
-  // ⭐ Toggle dropdown
-  toggleCountryDropdown() {
-    this.isCountryDropdownOpen = !this.isCountryDropdownOpen;
+}
+
+allowMessageInput(event: KeyboardEvent) {
+  const char = event.key;
+
+  if (!/^[A-Za-z0-9\s.,!?'"():;&\-\/]$/.test(char)) {
+    event.preventDefault();
+  }
+}
+
+preventMessagePaste(event: ClipboardEvent) {
+  const text = event.clipboardData?.getData('text') || '';
+
+  if (!/^[A-Za-z0-9\s.,!?'"():;&\-\/]+$/.test(text)) {
+    event.preventDefault();
+  }
+}
+
+allowEmailInput(event: KeyboardEvent) {
+  const char = event.key;
+
+  // Allow control keys
+  if ([
+    'Backspace',
+    'Delete',
+    'ArrowLeft',
+    'ArrowRight',
+    'Tab',
+    'Home',
+    'End'
+  ].includes(char)) {
+    return;
   }
 
-  // ⭐ Select country and update form
-  selectCountry(country: any) {
-    this.selectedCountry = country;
-    this.consultationForm.patchValue({ countryCode: country.dial_code });
-    this.isCountryDropdownOpen = false;
+  if (!/^[A-Za-z0-9@._%+-]$/.test(char)) {
+    event.preventDefault();
   }
+}
 
-  // ⭐ Close dropdown when clicking outside
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: Event) {
-    const target = event.target as HTMLElement;
-    if (!target.closest('.relative.w-28')) {
-      this.isCountryDropdownOpen = false;
+preventEmailPaste(event: ClipboardEvent) {
+  const text = event.clipboardData?.getData('text') || '';
+
+  if (
+    !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(text)
+  ) {
+    event.preventDefault();
+  }
+}
+private hasInvalidStartingRepeats(value: string, maxRepeat: number): boolean {
+
+  if (!value) return false;
+
+  let count = 1;
+
+  for (let i = 1; i < value.length; i++) {
+
+    if (value[i] === value[0]) {
+      count++;
+    } else {
+      break;
     }
   }
 
-  // ⭐ AUTO FORMAT PHONE NUMBER
-  formatPhone() {
-    const code = this.consultationForm.value.countryCode;
-    let value = this.consultationForm.value.number.replace(/\D/g, "");
+  return count > maxRepeat;
+}
+  preventInvalidPaste(event: ClipboardEvent) {
+    const pastedText = event.clipboardData?.getData('text') || '';
 
-    if (!value) return;
+    if (!/^[a-zA-Z ]+$/.test(pastedText)) {
+      event.preventDefault();
+    }
+  }
 
-    let formatted = value;
 
-    switch (code) {
-      case "+91":
-        formatted = value.replace(/(\d{5})(\d{0,5})/, "$1 $2").trim();
-        break;
-      case "+1":
-        formatted = value.replace(/(\d{3})(\d{3})(\d{0,4})/, "($1) $2-$3").replace(/-$/, "");
-        break;
-      case "+971":
-        formatted = value.replace(/(\d{3})(\d{3})(\d{0,4})/, "$1 $2 $3").trim();
-        break;
-      case "+44":
-        formatted = value.replace(/(\d{5})(\d{0,6})/, "$1 $2").trim();
-        break;
-      case "+65":
-        formatted = value.replace(/(\d{4})(\d{0,4})/, "$1 $2").trim();
-        break;
-      case "+60":
-        formatted = value.replace(/(\d{3})(\d{3})(\d{0,4})/, "$1 $2 $3").trim();
-        break;
-      case "+977":
-        formatted = value.replace(/(\d{2})(\d{0,6})/, "$1-$2").trim();
-        break;
-      case "+92":
-        formatted = value.replace(/(\d{4})(\d{0,7})/, "$1 $2").trim();
-        break;
-      case "+880":
-        formatted = value.replace(/(\d{5})(\d{0,6})/, "$1-$2").trim();
-        break;
-      case "+49":
-        formatted = value.replace(/(\d{3})(\d{0,6})/, "$1 $2");
-        break;
-      case "+33":
-        formatted = value.replace(/(\d{2})(\d{2})(\d{2})(\d{0,2})/, "$1 $2 $3 $4");
-        break;
-      default:
-        formatted = value.replace(/(\d{3})(?=\d)/g, "$1 ").trim();
+  private hasSequentialDigits(value: string, limit: number = 6): boolean {
+
+  let ascCount = 1;
+  let descCount = 1;
+
+  for (let i = 1; i < value.length; i++) {
+
+    const prev = Number(value[i - 1]);
+    const curr = Number(value[i]);
+
+    // Ascending sequence (0-9 circular)
+    if (curr === (prev + 1) % 10) {
+      ascCount++;
+    } else {
+      ascCount = 1;
     }
 
-    this.consultationForm.patchValue({ number: formatted }, { emitEvent: false });
+    // Descending sequence (9-0 circular)
+    if (curr === (prev + 9) % 10) {
+      descCount++;
+    } else {
+      descCount = 1;
+    }
+
+    if (ascCount >= limit || descCount >= limit) {
+      return true;
+    }
   }
 
-  // ⭐ VALIDATE INTERNATIONAL NUMBER
-  validateInternationalPhone(): boolean {
-    const code = this.consultationForm.value.countryCode;
-    const number = this.consultationForm.value.number.replace(/\D/g, ""); // clean
+  return false;
+}
+submitForm() {
 
-    const phone = parsePhoneNumberFromString(code + number);
-    return phone?.isValid() ?? false;
+  if (this.consultationForm.invalid) {
+    this.consultationForm.markAllAsTouched();
+    return;
   }
 
-  submitForm() {
-    if (!this.validateInternationalPhone()) {
-      this.consultationForm.get('number')?.setErrors({ invalidPhone: true });
+  // ✅ Check reCAPTCHA
+  if (!this.captchaVerified) {
+    this.captchaError = true;
+    return;
+  }
+
+  const phone = this.phoneInput.nativeElement.value.replace(/\D/g, '');
+  const country = this.iti.getSelectedCountryData();
+  const phoneControl = this.consultationForm.get('number');
+
+  // Clear previous errors
+  phoneControl?.setErrors(null);
+
+  if (country.iso2 === 'in') {
+
+    // Must be exactly 10 digits and start with 6-9
+    if (!/^[6-9]\d{9}$/.test(phone)) {
+      phoneControl?.setErrors({
+        invalidStart: true,
+      });
       return;
     }
 
-    const fullPhone = this.consultationForm.value.countryCode + ' ' + this.consultationForm.value.number;
+    // More than 4 repeated digits at the beginning
+    if (this.hasInvalidStartingRepeats(phone, 4)) {
+      phoneControl?.setErrors({
+        repeatedDigits: true,
+      });
+      return;
+    }
 
-    const formData = {
-      ...this.consultationForm.value,
-      phone: fullPhone
-    };
+    // Sequential numbers
+    if (this.hasSequentialDigits(phone, 6)) {
+      phoneControl?.setErrors({
+        sequentialDigits: true,
+      });
+      return;
+    }
 
-    this.http.post('http://accric.com/api/send-mail', formData).subscribe({
-      next: () => {
-        alert("Email sent successfully!");
-        this.consultationForm.reset();
-        this.selectedCountry = this.countryCodes.find(c => c.dial_code === '+91');
-        this.consultationForm.patchValue({ countryCode: '+91' });
-      },
-      error: () => {
-        alert("Failed to send email.");
-      }
-    });
+  } else {
+
+    // Foreign number length
+    if (phone.length < 7 || phone.length > 15) {
+      phoneControl?.setErrors({
+        invalidLength: true,
+      });
+      return;
+    }
+
+    // More than 5 repeated digits at the beginning
+    if (this.hasInvalidStartingRepeats(phone, 5)) {
+      phoneControl?.setErrors({
+        repeatedDigits: true,
+      });
+      return;
+    }
+
+    // Sequential numbers
+    if (this.hasSequentialDigits(phone, 6)) {
+      phoneControl?.setErrors({
+        sequentialDigits: true,
+      });
+      return;
+    }
+
   }
 
+  const fullPhone = '+' + country.dialCode + ' ' + phone;
+
+  const formData = {
+    ...this.consultationForm.value,
+    phone: fullPhone,
+    captchaVerified: this.captchaVerified
+  };
+
+  this.http.post(
+
+    'http://accric.com/api/send-mail',
+    
+    formData
+  ).subscribe({
+
+    next: () => {
+
+      alert('Email sent successfully!');
+
+      this.consultationForm.reset({
+        number: '',
+        name: '',
+        email: '',
+        company: '',
+        subject: '',
+        message: '',
+      });
+
+      this.iti.setCountry('us');
+      this.phoneInput.nativeElement.value = '';
+
+      // Reset reCAPTCHA
+      this.captchaVerified = false;
+      this.captchaError = false;
+
+if (this.captchaWidgetId !== null) {
+  grecaptcha.reset(this.captchaWidgetId);
+}
+    },
+
+    error: () => {
+      alert('Failed to send email.');
+    }
+
+  });
+
+}
   selectOffice(map: string) {
     this.selectedMap = map;
   }
